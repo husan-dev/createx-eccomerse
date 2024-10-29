@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ant-collapse-item:not(:first-child) {
+  border-top: 1px solid #e5e8ed;
+}
+.custom-select .ant-select-selector {
+  border-radius: 1px !important;
+}

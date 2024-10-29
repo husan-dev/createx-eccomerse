@@ -1,0 +1,45 @@
+{
+  "landingPage": {
+    "header": {
+      "section1": {
+        "track": "Trek",
+        "blog": "Blog",
+        "contacts": "Kontaktlar",
+        "login-register": "Kirish/ Ro'yxatdan o'tish"
+      },
+      "section2": {
+        "womens": "ayollar",
+        "mens": "akraklar",
+        "girls": "qizlar",
+        "boys": "bolalar"
+      }
+    },
+    "topCategories": {
+      "womens": "Ayollar",
+      "mens": "Erkaklar",
+      "kids": "Bolalar"
+    },
+    "downloadApp": {
+      "title": "Createx Store ilovamiz yordamida mobil xariddan rohatlaning!"
+    },
+    "adventage": {
+      "1": {
+        "title": "Dunyo bo'ylab \n tez yetkazib berish",
+        "desc": "{{amount}} gacha bepul yetkazib beramiz"
+      },
+      "2": {
+        "title": "24/7 mijozlarni \n qo‘llab-quvvatlash",
+        "desc": "Do'stona 24/7 mijozlarni qo'llab-quvvatlash"
+      },
+      "3": {
+        "title": "Pulni qaytarish kafolati",
+        "desc": "Biz pulni {{day}} ichida qaytaramiz"
+      },
+      "4": {
+        "title": "Xavfsiz onlayn to'lov",
+        "desc": "Barcha asosiy kredit kartalarini qabul qilamiz"
+      }
+    },
+    "footer": {}
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "landingPage": {
+    "header": {
+      "section1": {
+        "track": "Track orders ",
+        "blog": "Blog",
+        "contacts": "Contact",
+        "login-register": "Log in / Registor"
+      },
+      "section2": {
+        "womens": "Womens",
+        "mens": "Mens",
+        "girls": "Girls",
+        "boys": "Boys"
+      }
+    },
+    "topCategories": {
+      "womens": "Women's",
+      "mens": "Men's",
+      "kids": "Kids'"
+    },
+    "downloadApp": {
+      "title": "Enjoy mobile shopping with our Createx Store App!"
+    },
+    "adventage": {
+      "1": {
+        "title": "Fast Worldwide Shipping",
+        "desc": "Get free shipping over {{amount}}"
+      },
+      "2": {
+        "title": "24/7 Customer Support",
+        "desc": "Friendly 24/7 customer support"
+      },
+      "3": {
+        "title": "Money Back Guarantee",
+        "desc": "We return money within {{day}}"
+      },
+      "4": {
+        "title": "Secure Online Payment",
+        "desc": "Accept all major credit cards"
+      }
+    },
+    "followInstagram": {
+      "title": ""
+    },
+    "footer": {
+      "help": {
+        "title": "Help",
+        "faq": "FAQ",
+        "track": "Track orders ",
+        "blog": "Blog"
+      },
+      "information": {
+        "title": "Information",
+        "newArrivals": "New Arrivals",
+        "trandingNow": "Tranding Now",
+        "sales": "Sales",
+        "Brands": "Brands"
+      },
+      "getInTouch": {
+        "title": "Get in Touch"
+      },
+      "download": { "title": "Download our app" }
+    }
+  }
+}
