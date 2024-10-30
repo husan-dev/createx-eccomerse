@@ -2,10 +2,11 @@ import { Button, Divider, Form, Input, Radio } from "antd";
 import { Paragraph, Text, Title } from "../../components/typography";
 import { useForm } from "antd/es/form/Form";
 import OrSignInWidth from "./or-sign-in-width";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function SignIn() {
   const [form] = useForm();
+  const { lang } = useParams();
   return (
     <>
       <div className="mx-auto max-w-[500px] py-[50px]">
@@ -45,7 +46,7 @@ function SignIn() {
             </Button>
           </Form>
           <Text className="!mb-5">
-            Dont hav account? <Link to={"/sign-up"}> Sign up</Link>
+            Dont hav account? <Link to={`/${lang}/sign-up`}> Sign up</Link>
           </Text>
         </div>
         <Divider className="!m-0" />

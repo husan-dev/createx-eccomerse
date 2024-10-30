@@ -8,9 +8,11 @@ const buttons = ["women", "men", "girls", "boys,"];
 function Subscribe() {
   return (
     <div className="py-10 bg-gray-200">
-      <Container className="grid items-center grid-cols-2">
+      <Container className="grid items-center grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col gap-2 w-[400px] max-w-[400px]">
-          <Title className="!mb-0 !font-bold">Subscribe for updates</Title>
+          <Title className="!mb-0 !font-bold !text-lg">
+            Subscribe for updates
+          </Title>
           <Paragraph>
             Subscribe for exclusive early sale access and new arrivals.
           </Paragraph>

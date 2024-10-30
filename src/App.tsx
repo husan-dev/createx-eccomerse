@@ -1,7 +1,6 @@
 import { ConfigProvider as AntProvider } from "antd";
 import {
   createBrowserRouter,
-  Navigate,
   Outlet,
   RouterProvider,
   useNavigate,
@@ -28,13 +27,10 @@ import ProductInfo from "./pages/product/general-info";
 import ProductDetalis from "./pages/product/product-detalis";
 import "./i18n";
 import ProductReviews from "./pages/product/reviews";
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import NotFound from "./pages/404";
 import { supportedLngs } from "./constants";
 
 function App() {
-  const { i18n } = useTranslation();
-
   return (
     <Fragment>
       <AntProvider
@@ -52,26 +48,18 @@ function App() {
 
 export default App;
 
-function LanguagePath() {
-  const { i18n } = useTranslation();
+function LangWrapper() {
   const { lang } = useParams();
-  const navigate = useNavigate();
-  const curPath = location.pathname;
-  useEffect(() => {
-    if (lang && i18n.resolvedLanguage !== lang) {
-      if (supportedLngs.includes(lang)) {
-        i18n.changeLanguage(lang);
-      } else {
-        navigate("/" + i18n.resolvedLanguage + curPath, { replace: true });
-      }
-    }
-  }, [lang]);
+  if (lang && !supportedLngs.includes(lang)) {
+    return <NotFound />;
+  }
   return <Outlet />;
 }
+
 const routes = createBrowserRouter([
   {
     path: `/:lang`,
-    element: <LanguagePath />,
+    element: <LangWrapper />,
     children: [
       {
         element: <Layout />,
@@ -108,5 +96,5 @@ const routes = createBrowserRouter([
       },
     ],
   },
-  { path: "*", element: <Navigate to="/uz" replace /> },
+  { path: "*", element: <NotFound /> },
 ]);

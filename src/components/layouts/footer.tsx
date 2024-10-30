@@ -22,7 +22,7 @@ const socialIcons = [
 function Footer() {
   return (
     <div className="!text-white bg-gray-900">
-      <Container className="flex flex-wrap justify-between py-5">
+      <Container className="grid  justify-between grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 py-[40px]">
         <div>
           <Paragraph className="font-bold text-white uppercase">help</Paragraph>
           <ul className="text-gray-500">
@@ -73,7 +73,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="col-span-2 sm:col-span-1">
           <Paragraph className="font-bold text-white uppercase">
             Download our app
           </Paragraph>

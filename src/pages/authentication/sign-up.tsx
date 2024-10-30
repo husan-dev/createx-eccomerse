@@ -3,10 +3,11 @@ import { Paragraph, Text, Title } from "../../components/typography";
 import { useForm } from "antd/es/form/Form";
 import OrSignInWidth from "./or-sign-in-width";
 import Breadcumb from "../../components/breadcumb";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function SignUp() {
   const [form] = useForm();
+  const { lang } = useParams();
   return (
     <>
       <Breadcumb />
@@ -59,7 +60,8 @@ function SignUp() {
             </Button>
           </Form>
           <Text className="!mb-5">
-            Already have an account? ? <Link to={"/sign-in"}> Sign in</Link>
+            Already have an account? 
+            <Link to={`/${lang}/sign-in`}> Sign in</Link>
           </Text>
         </div>
         <Divider className="!m-0" />

@@ -8,7 +8,7 @@ import brandLogo6 from "../../../public/images/landing/pertners/brand-logo-5.svg
 
 function Partners() {
   return (
-    <Container className="flex justify-between py-6 my-[120px]">
+    <Container className="flex flex-wrap justify-between py-6 my-[120px]">
       {images.map((item, index) => (
         <img key={index} src={item} alt="" />
       ))}
