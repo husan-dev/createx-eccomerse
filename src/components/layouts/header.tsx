@@ -37,20 +37,20 @@ function Header() {
 
   return (
     <>
-      <div className="sticky top-0 z-50">
+      <div className="md:!sticky top-0 z-50">
         <Header1 />
         <div className="relative bg-white ">
           <Container className="flex items-center justify-between py-4 ">
             <div className="flex gap-[60px]">
               <img
-                className="cursor-pointer"
+                className="cursor-pointer w-[120px]"
                 onClick={() => {
                   navigate("");
                 }}
                 src={logo}
                 alt=""
               />
-              <Space className="gap-[40px]">
+              <Space className=" hidden xl:flex gap-[40px]">
                 {category.map((item, index) => (
                   <Paragraph
                     onClick={() => {
@@ -68,18 +68,18 @@ function Header() {
               <Input
                 size="large"
                 placeholder="Search for products"
-                className="w-[380px] !rounded-none"
+                className="w-[380px] !rounded-none hidden  md:flex"
                 suffix={<IoSearch />}
               />
 
-              <Space>
+              <Space className="hidden md:flex">
                 <Space
                   onClick={() => navigate("my-profile/wishlist")}
                   className="cursor-pointer"
                 >
                   <FaRegHeart />0
                 </Space>
-                <Divider type="vertical" />
+                <Divider type="vertical" className="bg-black opacity-50" />
                 <Space
                   className="cursor-pointer"
                   onClick={() => {

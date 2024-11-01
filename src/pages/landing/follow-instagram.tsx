@@ -10,23 +10,40 @@ const images = [image1, image2, image3];
 
 function FollowInstagram() {
   return (
-    <Container className="flex justify-between my-[180px]">
-      <div>
-        <Title level={4} className="!font-normal uppercase">
-          Follow us on Instagram
-        </Title>
-        <Title className="!font-bold !mt-0">@createx_store</Title>
-        <Button
-          className="!rounded-sm mt-8"
-          icon={<FaInstagram />}
-          size="large"
-        >
-          Follow Instagram
-        </Button>
+    <Container className="flex flex-col md:flex-row gap-5 justify-between my-[100px] lg:my-[180px]">
+      <div className="w-full lg:w-[300px] flex items-center">
+        <div>
+          <Title level={4} className="!font-normal !text-lg uppercase">
+            Follow us on Instagram
+          </Title>
+          <Title className="!font-bold !mt-0 !text-4xl">@createx_store</Title>
+          <div className="grid grid-cols-3 gap-5 py-[20px] justify-evenly lg:hidden">
+            {images.map((item, index) => (
+              <img
+                className="w-full aspect-ratio"
+                key={index}
+                src={item}
+                alt="notFound"
+              />
+            ))}
+          </div>
+          <Button
+            className="!rounded-sm mt-8"
+            icon={<FaInstagram />}
+            size="large"
+          >
+            Follow Instagram
+          </Button>
+        </div>
       </div>
-      <Space>
+      <Space className="hidden lg:flex">
         {images.map((item, index) => (
-          <img className="aspect-ratio" key={index} src={item} alt="notFound" />
+          <img
+            className="w-full aspect-ratio"
+            key={index}
+            src={item}
+            alt="notFound"
+          />
         ))}
       </Space>
     </Container>

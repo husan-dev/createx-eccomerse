@@ -40,6 +40,24 @@
         "desc": "Barcha asosiy kredit kartalarini qabul qilamiz"
       }
     },
-    "footer": {}
+    "footer": {
+      "help": {
+        "title": "Yordam",
+        "faq": "FAQ",
+        "track": "Buyurtmalarni kuzatish",
+        "blog": "Blog"
+      },
+      "information": {
+        "title": "Malumotlar",
+        "newArrivals": "Yangi kelganlar",
+        "trandingNow": "Hozirgi Trendlar",
+        "Brands": "Brendlar"
+      },
+      "getInTouch": {
+        "title": "Bog'lanish"
+      },
+      "download": { "title": "Ilovamizni yuklab oling" }
+    },
+    "goTop": "yuqoriga o'tish"
   }
 }

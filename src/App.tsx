@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
   Outlet,
   RouterProvider,
-  useNavigate,
   useParams,
 } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
@@ -29,19 +28,25 @@ import "./i18n";
 import ProductReviews from "./pages/product/reviews";
 import NotFound from "./pages/404";
 import { supportedLngs } from "./constants";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const querycClient = new QueryClient();
 function App() {
   return (
     <Fragment>
-      <AntProvider
-        theme={{
-          token: {
-            colorPrimary: "#17696A",
-          },
-        }}
-      >
-        <RouterProvider router={routes} />
-      </AntProvider>
+      <QueryClientProvider client={querycClient}>
+        <AntProvider
+          theme={{
+            token: {
+              colorPrimary: "#17696A",
+            },
+          }}
+        >
+          <RouterProvider router={routes} />
+          <ReactQueryDevtools initialIsOpen />
+        </AntProvider>
+      </QueryClientProvider>
     </Fragment>
   );
 }

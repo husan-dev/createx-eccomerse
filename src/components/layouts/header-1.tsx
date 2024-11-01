@@ -15,7 +15,6 @@ function Header1() {
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
   const location = useLocation();
-  const pathname = location.pathname.split("/");
   const departments = useMemo(
     () => [
       { title: t("landingPage.header.section1.track"), slug: "track" },
@@ -24,6 +23,7 @@ function Header1() {
     ],
     [t]
   );
+  const pathname = location.pathname.split("/");
   const navigateChangeLang = useCallback(
     (lang: string) =>
       pathname.length === 2
@@ -31,13 +31,14 @@ function Header1() {
         : `/${lang}/${pathname.slice(2).join("/")}`,
     [pathname]
   );
+  console.log(pathname, "path");
   return (
-    <div className="bg-gray-900">
+    <div className="hidden bg-gray-900 md:block">
       <Container className="flex justify-between py-2">
         <Paragraph className="!text-gray-500 !mb-0">
           {`Available 24/7 at ${TEL_NUMBER}`}
         </Paragraph>
-        <Space size={"large"}>
+        <Space className="hidden lg:flex" size={"large"}>
           {departments.map((item, index) => (
             <Paragraph
               className={`!mb-0 ${

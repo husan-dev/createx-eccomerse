@@ -40,6 +40,51 @@
         "desc": "Принимаем все основные кредитные карты"
       }
     },
-    "footer": {}
-  }
+    "footer": {
+      "help": {
+        "title": "помощь",
+        "faq": "FAQ",
+        "track": "Отслеживание заказов",
+        "blog": "Блог"
+      },
+      "information": {
+        "title": "информация",
+        "newArrivals": "Новые поступления",
+        "trandingNow": "Сейчас в тренде",
+        "Brands": "бренды"
+      },
+      "getInTouch": {
+        "title": "свяжитесь с нами"
+      },
+      "download": { "title": "Загрузите наше приложение" }
+    },
+    "goTop": "двигаться вверх"
+  },
+  "auth": {
+    "orSign": "Or sign in with",
+    "signIn": {
+      "title": "sign in",
+      "desc": "Sign in to your account using email and password provided during registration.",
+      "inputs": {
+        "email": {
+          "label": "email",
+          "placeholder": "Your working email"
+        },
+        "password": {
+          "label": "password",
+          "placeholder": "Enter  password"
+        }
+      },
+      "button": "sign in"
+    },
+    "signUp": {
+      "title": "sign up",
+      "desc": "Registration takes less than a minute but gives you full control over your orders.",
+      "inputs": {}
+    }
+  },
+
+  "profile": {},
+  "products": {},
+  "product": {}
 }

@@ -7,12 +7,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 import { BsDoorClosed } from "react-icons/bs";
 import { FaRegStar } from "react-icons/fa6";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 
 function MyProfile() {
   const location = useLocation();
   const navigate = useNavigate();
-  const paths = location.pathname.slice(1).split("/");
+  const { lang } = useParams();
+  const paths = location.pathname.split("/").slice(1);
+  console.log(paths, location.pathname);
   return (
     <Container className="py-[50px] flex justify-between">
       <div className="flex flex-col flex-grow-0  rounded-md border-b-0 w-[250px]">
@@ -27,7 +29,7 @@ function MyProfile() {
             onClick={() => navigate(item.path)}
             className={`px-4 py-2 border-b border-x cursor-pointer  ${
               location.pathname ===
-              "/" + paths[1] + (item.path == "" ? "" : "/" + item.path)
+              `/${lang}/` + paths[1] + (item.path == "" ? "" : "/" + item.path)
                 ? "bg-main text-white"
                 : ""
             }`}

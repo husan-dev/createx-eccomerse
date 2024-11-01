@@ -10,6 +10,8 @@ import { FaPinterestP } from "react-icons/fa";
 import aplleLogo from "../../../public/images/app-store.svg";
 import playMarketLogo from "../../../public/images/google-play.svg";
 import { EMAIL, TEL_NUMBER } from "../../constants";
+import { useTranslation } from "react-i18next";
+import { useCallback } from "react";
 
 const socialIcons = [
   <FaFacebookF />,
@@ -20,16 +22,25 @@ const socialIcons = [
 ];
 
 function Footer() {
+  const { t } = useTranslation("", { keyPrefix: "landingPage.footer" });
+  const goTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <div className="!text-white bg-gray-900">
       <Container className="grid  justify-between grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 py-[40px]">
         <div>
-          <Paragraph className="font-bold text-white uppercase">help</Paragraph>
+          <Paragraph className="font-bold text-white uppercase">
+            {t("help.title")}
+          </Paragraph>
           <ul className="text-gray-500">
-            <li>FAQ</li>
-            <li>Track order</li>
+            <li>{t("help.faq")}</li>
+            <li>{t("help.track")}</li>
             <li>Contacts</li>
-            <li>Blog</li>
+            <li>{t("help.blog")}</li>
           </ul>
         </div>
         <div>
@@ -92,7 +103,12 @@ function Footer() {
         <Text className="!text-gray-500">
           © All rights reserved. Made with by Createx Studio{" "}
         </Text>
-        <Text className="!text-gray-500 font-semibold">Go to top</Text>
+        <Text
+          onClick={goTop}
+          className="!text-gray-500 font-semibold hidden md:block duration-300 hover:!text-white cursor-pointer"
+        >
+          {t("goTop")}
+        </Text>
       </Container>
     </div>
   );

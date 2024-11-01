@@ -8,9 +8,9 @@ const buttons = ["women", "men", "girls", "boys,"];
 function Subscribe() {
   return (
     <div className="py-10 bg-gray-200">
-      <Container className="grid items-center grid-cols-1 md:grid-cols-2">
-        <div className="flex flex-col gap-2 w-[400px] max-w-[400px]">
-          <Title className="!mb-0 !font-bold !text-lg">
+      <Container className="grid items-center grid-cols-1 gap-10 md:gap-5 md:grid-cols-2">
+        <div className="flex flex-col gap-2 ">
+          <Title className=" !mb-0 !font-bold !text-3xl sm:!text-4xl md:!text-3xl lg:!text-4xl">
             Subscribe for updates
           </Title>
           <Paragraph>
@@ -23,11 +23,11 @@ function Subscribe() {
               </Button>
             ))}
           </Space>
-          <div className="">
+          <div>
             <Paragraph>Email</Paragraph>
             <Space.Compact className="!rounded-none h-[45px]">
               <Input
-                className="!w-full !rounded-sm"
+                className="w-full !rounded-sm"
                 size="large"
                 placeholder="enter Email"
               />
@@ -38,7 +38,11 @@ function Subscribe() {
           </div>
           <Radio>I agree to receive communications from Createx Store.</Radio>
         </div>
-        <img className="mx-auto" src={image} alt="" />
+        <img
+          className="mx-auto w-[80%] md:w-full lg:w-[60%]"
+          src={image}
+          alt=""
+        />
       </Container>
     </div>
   );

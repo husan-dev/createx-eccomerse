@@ -9,7 +9,7 @@ import { Pagination, Navigation } from "swiper/modules";
 
 function Banner() {
   return (
-    <div>
+    <div className="hidden lg:block">
       <StyledSwiper
         navigation={{
           prevEl: ".swiper-button-prev",

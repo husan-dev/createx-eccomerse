@@ -33,7 +33,7 @@ function Adventages() {
   const { t } = useTranslation();
   const amount = 250;
   return (
-    <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start  gap-5 mt-[120px]">
+    <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start  gap-8 sm:gap-6 md:gap-5 mt-[120px]">
       {data.map((item, index) => (
         <div
           key={index}
