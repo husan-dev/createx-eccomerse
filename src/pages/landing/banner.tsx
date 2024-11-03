@@ -6,30 +6,46 @@ import "swiper/css/navigation";
 import styled from "@emotion/styled";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { Pagination, Navigation } from "swiper/modules";
-
 function Banner() {
   return (
-    <div className="hidden lg:block">
+    <div>
       <StyledSwiper
-        navigation={{
-          prevEl: ".swiper-button-prev",
-          nextEl: ".swiper-button-next",
+        breakpoints={{
+          200: {
+            slidesPerView: 1.1,
+            spaceBetween: 15,
+          },
+          640: {
+            slidesPerView: 1.1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+              clickable: true,
+            },
+            modules: [Pagination, Navigation],
+            navigation: {
+              prevEl: ".swiper-button-prev",
+              nextEl: ".swiper-button-next",
+            },
+          },
+          1024: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
         }}
-        pagination={{ clickable: true }}
-        slidesPerView={1}
-        className="h-[800px] "
-        modules={[Pagination, Navigation]}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        className="px-5 md:px-0 my-5 md:my-0 aspect-[3/2] md:aspect-[6/5] lg:aspect-[7/2.9]"
       >
-        <SwiperSlide className="bg-red-500">Slide 1</SwiperSlide>
-        <SwiperSlide className="bg-red-600">Slide 2</SwiperSlide>
-        <SwiperSlide className="bg-red-700">Slide 3</SwiperSlide>
-        <SwiperSlide className="bg-red-800">Slide 4</SwiperSlide>
-        <div className={`swiper-button-prev`}>
+        <SwiperSlide className="bg-red-500 ">Slide 1</SwiperSlide>
+        <SwiperSlide className="bg-red-600 ">Slide 2</SwiperSlide>
+        <SwiperSlide className="bg-red-700 ">Slide 3</SwiperSlide>
+        <SwiperSlide className="bg-red-800 ">Slide 4</SwiperSlide>
+        <div className={`swiper-button-prev hidden md:block`}>
           <FaArrowLeft />
         </div>
-        <div className="swiper-button-next">
+        <div className="hidden swiper-button-next md:block">
           <FaArrowRight />
         </div>
       </StyledSwiper>

@@ -21,7 +21,7 @@ const socialIcons = [
   <FaPinterestP />,
 ];
 
-function Footer() {
+function Footer({ className }: { className?: string }) {
   const { t } = useTranslation("", { keyPrefix: "landingPage.footer" });
   const goTop = useCallback(() => {
     window.scrollTo({
@@ -30,7 +30,7 @@ function Footer() {
     });
   }, []);
   return (
-    <div className="!text-white bg-gray-900">
+    <div className={`!text-white bg-gray-900 mb-[70px] md:mb-0 ${className}`}>
       <Container className="grid  justify-between grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 py-[40px]">
         <div>
           <Paragraph className="font-bold text-white uppercase">

@@ -18,7 +18,7 @@ function TopCategories() {
   return (
     <div>
       <Container className="">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-5">
           {cards.map((item, index) => (
             <div key={index}>
               <img src={item.img} className="mx-auto mb-4" alt="" />

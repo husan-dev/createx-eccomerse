@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 function Partners() {
   return (
-    <Container className="flex flex-wrap justify-between py-6 my-[120px]">
+    <Container className="flex flex-wrap justify-between py-6 my-[80px] md:my-[120px]">
       <Swiper
         breakpoints={{
           200: {

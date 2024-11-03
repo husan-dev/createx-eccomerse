@@ -1,10 +1,11 @@
-import Container from "../../components/container";
 import image from "../../../public/images/landing/download-app.svg";
 import { Title } from "../../components/typography";
 import { Space } from "antd";
 import playMarket from "../../../public/images/google-play.svg";
 import appStore from "../../../public/images/app-store.svg";
 import { useTranslation } from "react-i18next";
+import Container from "../../components/container";
+
 
 function DownloadApp() {
   const { t } = useTranslation();

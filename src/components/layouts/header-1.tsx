@@ -31,7 +31,7 @@ function Header1() {
         : `/${lang}/${pathname.slice(2).join("/")}`,
     [pathname]
   );
-  console.log(pathname, "path");
+  console.log(pathname, "path", import.meta.env.VITE_BASE_URL);
   return (
     <div className="hidden bg-gray-900 md:block">
       <Container className="flex justify-between py-2">

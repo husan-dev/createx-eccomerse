@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Header1 from "./header-1";
 
-function Header() {
+function Header({ className }: { className?: string }) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation("", {
@@ -26,18 +26,10 @@ function Header() {
     { title: t("girls") },
     { title: t("boys") },
   ];
-  // useEffect(() => {
-  //   // body elementiga overflow hidden qo'shish
-  //   document.body.style.overflow = dCategory ? "hidden" : "auto";
-
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [dCategory]);
 
   return (
     <>
-      <div className="md:!sticky top-0 z-50">
+      <div className={`md:!sticky top-0 z-50 ${className}`}>
         <Header1 />
         <div className="relative bg-white ">
           <Container className="flex items-center justify-between py-4 ">
@@ -110,7 +102,7 @@ function Header() {
           </div>
         </div>
       </div>
-      <div className="bg-[#17696A]">
+      <div className={`bg-[#17696A] ${className}`}>
         <Container className="text-center">sadasdas</Container>
       </div>
       <Drawer
