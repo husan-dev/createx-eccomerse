@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-class ProductStore {
+class ProductsStore {
   materials = [
     { value: "cotton", title: "Cotton" },
     { value: "cashmere", title: "Cashmere" },
@@ -92,5 +92,5 @@ class ProductStore {
     makeAutoObservable(this);
   }
 }
-const productStore = new ProductStore();
-export default productStore;
+const productsStore = new ProductsStore();
+export default productsStore;

@@ -7,15 +7,17 @@ import {
   InputNumber,
   Pagination,
   Radio,
+  Select,
   Slider,
   Space,
 } from "antd";
+import { IoMdClose } from "react-icons/io";
 import Container from "@components/container";
 import { IoSearch } from "react-icons/io5";
 import Subscribe from "@components/layouts/subscribe";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useReducer, useState } from "react";
 import clsx from "clsx";
 import { CiFilter } from "react-icons/ci";
 import Card from "@components/products-card";
@@ -24,28 +26,86 @@ import { IoRemoveOutline } from "react-icons/io5";
 import BreadcrumbContainer from "@components/breadcrumb-container";
 import { Paragraph } from "@components/typography";
 import productStore from "@store/slices/products";
+import {
+  Action,
+  dispatchAction,
+  ISelectedFilter,
+  State,
+} from "@typess/products";
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+const initialState: State = {
+  price: null,
+  brand: null,
+  color: null,
+  material: null,
+  size: null,
+};
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case "SET_SIZE":
+      return { ...state, size: action.payload };
+    case "SET_BRAND":
+      return { ...state, brand: action.payload };
+    case "SET_PRICE":
+      return { ...state, price: action.payload };
+    case "SET_COLOR":
+      return { ...state, color: action.payload };
+    case "SET_MATERIAL":
+      return { ...state, material: action.payload };
+    default:
+      return state;
+  }
+};
+
 function Products() {
   const [hideFilter, setHideFilter] = useState(false);
-  const [form] = useForm();
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [selectedFilter, setSelectedFilter] = useState<ISelectedFilter[]>([]);
 
+  const updateSelectedFilter = useCallback(
+    (actionType, key, value) => {
+      const isTrue = selectedFilter.some(
+        (item) => item.actionType === actionType
+      );
+      const newSelectedFilter: ISelectedFilter[] = isTrue
+        ? selectedFilter.map((item) => {
+            if (item.actionType === actionType) {
+              return { ...item, payload: value };
+            }
+            return item;
+          })
+        : [
+            ...selectedFilter,
+            {
+              key,
+              actionType,
+              payload: value,
+            },
+          ];
+      setSelectedFilter(newSelectedFilter);
+    },
+    [selectedFilter]
+  );
+  const [form] = useForm();
+  console.log(state, "this state");
   const items: CollapseProps["items"] = useMemo(
     () => [
       {
         key: "1",
         label: <b>Clothes</b>,
-        children: <div>{text}</div>,
+        children: <div>{""}</div>,
       },
       {
         key: "2",
         label: <b>Size</b>,
         children: (
-          <Radio.Group>
+          <Radio.Group
+            value={state.size}
+            onChange={(e) => {
+              dispatch({ type: "SET_SIZE", payload: e.target.value });
+              updateSelectedFilter("SET_SIZE", "size", e.target.value);
+            }}
+          >
             <Space direction="vertical">
               {productStore.sizes.map((item) => (
                 <Radio key={item.value} value={item.value}>
@@ -60,23 +120,29 @@ function Products() {
         key: "3",
         label: <b>Color</b>,
         children: (
-          <div className="grid grid-cols-4 gap-3 max-h-[180px] overflow-y-auto pe-5">
-            {productStore.colors.map((item) => (
-              <div className="flex flex-col justiy-center">
-                <div
-                  key={item.value}
-                  className="flex items-center justify-center w-full p-1 border rounded-full cursor-pointer aspect-square"
-                >
-                  <span
-                    className={`p-3 w-full aspect-square rounded-full border`}
-                    style={{ backgroundColor: item.color }}
-                  ></span>
+          <div className="max-h-[180px] overflow-y-auto pe-5">
+            <div className="grid grid-cols-4 gap-5 sm:grid-cols-6 md:grid-cols-3 xl:grid-cols-4">
+              {productStore.colors.map((item) => (
+                <div className="flex flex-col justiy-center">
+                  <div
+                    onClick={() => {
+                      dispatch({ type: "SET_COLOR", payload: item.value });
+                      updateSelectedFilter("SET_COLOR", "color", item.value);
+                    }}
+                    key={item.value}
+                    className="flex items-center justify-center w-full p-1 border rounded-full cursor-pointer hover:scale-105 aspect-square"
+                  >
+                    <span
+                      className={`p-3 w-full aspect-square rounded-full border`}
+                      style={{ backgroundColor: item.color }}
+                    ></span>
+                  </div>
+                  <Paragraph className="!m-0 text-center text-xs">
+                    {item.title}
+                  </Paragraph>
                 </div>
-                <Paragraph className="!m-0 text-center text-xs">
-                  {item.title}
-                </Paragraph>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ),
       },
@@ -90,7 +156,18 @@ function Products() {
               suffix={<IoSearch />}
               className="w-full !rounded-sm mb-5"
             />
-            <Radio.Group className="max-h-[180px] overflow-y-auto w-full">
+            <Radio.Group
+              value={state.material}
+              onChange={(e) => {
+                dispatch({ type: "SET_MATERIAL", payload: e.target.value });
+                updateSelectedFilter(
+                  "SET_MATERIAL",
+                  "material",
+                  e.target.value
+                );
+              }}
+              className="max-h-[180px] overflow-y-auto w-full"
+            >
               <Space direction="vertical">
                 {productStore.materials.map((item) => (
                   <Radio key={item.value} value={item.value}>
@@ -112,7 +189,14 @@ function Products() {
               className="w-full !rounded-sm mb-5"
               placeholder="Search Brand"
             />
-            <Radio.Group className="max-h-[180px] overflow-y-auto w-full">
+            <Radio.Group
+              value={state.brand}
+              onChange={(e) => {
+                dispatch({ type: "SET_BRAND", payload: e.target.value });
+                updateSelectedFilter("SET_BRAND", "brand", e.target.value);
+              }}
+              className="max-h-[180px] overflow-y-auto w-full"
+            >
               <Space direction="vertical">
                 {productStore.brands.map((item) => (
                   <Radio key={item.value} value={item.value}>
@@ -129,29 +213,89 @@ function Products() {
         label: <b>Price</b>,
         children: (
           <>
-            <Slider className="mt-8" range defaultValue={[20, 50]} />
+            <Slider
+              value={state.price ? state.price : [0, 1000]}
+              min={0}
+              max={1000}
+              onChange={(value) =>
+                dispatch({
+                  type: "SET_PRICE",
+                  payload: value as [number, number],
+                })
+              }
+              className="mt-8"
+              range
+              defaultValue={[20, 50]}
+            />
             <div className="flex items-center justify-between mt-5 ">
-              <InputNumber size="large" className="rounded-sm w-[40%]" />
+              <InputNumber
+                value={state.price ? state.price[0] : 0}
+                size="large"
+                className="rounded-sm w-[40%]"
+              />
               <IoRemoveOutline />
-              <InputNumber size="large" className="rounded-sm w-[40%]" />
+              <InputNumber
+                value={state.price ? state.price[1] : 1000}
+                size="large"
+                className="rounded-sm w-[40%]"
+              />
             </div>
           </>
         ),
       },
     ],
-    []
+    [state]
   );
   return (
     <>
-      <BreadcrumbContainer />
+      <BreadcrumbContainer className="flex justify-between">
+        <Space>
+          {selectedFilter.map(
+            (item) =>
+              item.payload && (
+                <Button
+                  key={item.key}
+                  onClick={() => {
+                    console.log(item, "Asdasas");
+                    dispatch(dispatchAction(item.actionType, null));
+                    setSelectedFilter((prev) =>
+                      prev.filter((filterItem) => filterItem.key !== item.key)
+                    );
+                  }}
+                  size="small"
+                  type="text"
+                  icon={<IoMdClose />}
+                  className=""
+                >
+                  {item.payload}
+                </Button>
+              )
+          )}
+          {selectedFilter.length > 1 && (
+            <Button
+              size="small"
+              type="text"
+              onClick={() => {
+                selectedFilter.forEach((item) =>
+                  dispatch(dispatchAction(item.actionType, null))
+                );
+                setSelectedFilter([]);
+              }}
+              icon={<IoMdClose />}
+            >
+              close All
+            </Button>
+          )}
+        </Space>
+      </BreadcrumbContainer>
       <Container className="py-6 ">
-        <div className="grid grid-cols-4 gap-4 md:gap-5 lg:gap-6 ">
+        <div className="grid flex-col-reverse grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 lg:gap-6 ">
           <div className="lg:pe-5">
             <Button
               size="large"
               icon={<CiFilter />}
               onClick={() => setHideFilter(!hideFilter)}
-              className="w-full mb-7  hover:!bg-teal-900 !text-white rounded-md bg-main"
+              className="w-full md:mb-7  hover:!bg-teal-900 !text-white rounded-md bg-main"
             >
               {!hideFilter ? "Hide Filter" : "Show Filter"}
             </Button>
@@ -159,14 +303,20 @@ function Products() {
           <Form
             colon={false}
             size="large"
-            className="justify-end col-span-3"
+            className="flex-row-reverse justify-between col-span-2 md:flex-row md:justify-end md:col-span-3 mb-7 md:mb-0"
             form={form}
             layout="inline"
           >
-            <Form.Item label="Sort by">
-              <Input
-                className="
-              !rounded-md"
+            <Form.Item label="Sort by" className="">
+              <Select
+                defaultValue={"name-asc"}
+                className="!rounded-md"
+                options={[
+                  { label: "name asc", value: "name-asc" },
+                  { label: "name desc", value: "name-desc" },
+                  { label: "price asc", value: "price-asc" },
+                  { label: "price desc", value: "price-desc" },
+                ]}
               />
             </Form.Item>
             <Form.Item label="Show" className="">
