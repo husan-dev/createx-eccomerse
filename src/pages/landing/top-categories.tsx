@@ -1,8 +1,8 @@
-import Container from "../../components/container";
-import kidImg from "../../../public/images/landing/top-categoies/image.svg";
-import menImg from "../../../public/images/landing/top-categoies/image-1.svg";
-import womenImg from "../../../public/images/landing/top-categoies/image-2.svg";
-import { Title } from "../../components/typography";
+import Container from "@components/container";
+import kidImg from "@images/landing/top-categoies/image.svg";
+import menImg from "@images/landing/top-categoies/image-1.svg";
+import womenImg from "@images/landing/top-categoies/image-2.svg";
+import { Title } from "@components/typography";
 import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 

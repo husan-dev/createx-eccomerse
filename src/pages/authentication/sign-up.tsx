@@ -1,8 +1,8 @@
 import { Button, Divider, Form, Input, Radio } from "antd";
-import { Paragraph, Text, Title } from "../../components/typography";
+import { Paragraph, Text, Title } from "@components/typography";
 import { useForm } from "antd/es/form/Form";
 import OrSignInWidth from "./or-sign-in-width";
-import Breadcumb from "../../components/breadcumb";
+
 import { Link, useParams } from "react-router-dom";
 
 function SignUp() {
@@ -10,7 +10,6 @@ function SignUp() {
   const { lang } = useParams();
   return (
     <>
-      <Breadcumb />
       <div className="max-w-[500px] mx-auto py-[50px]">
         <div className="px-5 pb-5 ">
           <Title className="text-center !font-semibold" level={2}>
@@ -60,7 +59,7 @@ function SignUp() {
             </Button>
           </Form>
           <Text className="!mb-5">
-            Already have an account? 
+            Already have an account?
             <Link to={`/${lang}/sign-in`}> Sign in</Link>
           </Text>
         </div>

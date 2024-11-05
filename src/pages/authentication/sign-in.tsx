@@ -1,5 +1,5 @@
 import { Button, Divider, Form, Input, Radio } from "antd";
-import { Paragraph, Text, Title } from "../../components/typography";
+import { Paragraph, Text, Title } from "@components/typography";
 import { useForm } from "antd/es/form/Form";
 import OrSignInWidth from "./or-sign-in-width";
 import { Link, useParams } from "react-router-dom";

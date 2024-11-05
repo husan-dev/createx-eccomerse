@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import { FaFacebook, FaGoogle, FaLinkedin, FaXTwitter } from "react-icons/fa6";
-import { Paragraph } from "../../components/typography";
+import { Paragraph } from "@components/typography";
 
 function OrSignInWidth() {
   return (

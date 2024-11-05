@@ -1,7 +1,7 @@
 import { Button } from "antd";
-import { Title } from "../../components/typography";
+import { Title } from "@components/typography";
 import { LuTrash2 } from "react-icons/lu";
-import AutoForm from "../../components/auto-form";
+import AutoForm from "@components/auto-form";
 import { IFormData } from "../../types/auto-form";
 import { useForm } from "antd/es/form/Form";
 

@@ -1,10 +1,10 @@
-import Container from "../../components/container";
-import brandLogo1 from "../../../public/images/landing/pertners/brand-logo.svg";
-import brandLogo2 from "../../../public/images/landing/pertners/brand-logo-1.svg";
-import brandLogo3 from "../../../public/images/landing/pertners/brand-logo-2.svg";
-import brandLogo4 from "../../../public/images/landing/pertners/brand-logo-3.svg";
-import brandLogo5 from "../../../public/images/landing/pertners/brand-logo-4.svg";
-import brandLogo6 from "../../../public/images/landing/pertners/brand-logo-5.svg";
+import Container from "@components/container";
+import brandLogo1 from "@images/landing/pertners/brand-logo.svg";
+import brandLogo2 from "@images/landing/pertners/brand-logo-1.svg";
+import brandLogo3 from "@images/landing/pertners/brand-logo-2.svg";
+import brandLogo4 from "@images/landing/pertners/brand-logo-3.svg";
+import brandLogo5 from "@images/landing/pertners/brand-logo-4.svg";
+import brandLogo6 from "@images/landing/pertners/brand-logo-5.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 function Partners() {

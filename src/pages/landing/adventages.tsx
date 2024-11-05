@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import logo2 from "../../../public/images/landing/adventages/ic-call-center.svg";
-import logo4 from "../../../public/images/landing/adventages/ic-credit-card.svg";
-import logo1 from "../../../public/images/landing/adventages/ic-delivery.svg";
-import logo3 from "../../../public/images/landing/adventages/ic-shield.svg";
-import Container from "../../components/container";
-import { Paragraph, Title } from "../../components/typography";
+import logo2 from "@images/landing/adventages/ic-call-center.svg";
+import logo4 from "@images/landing/adventages/ic-credit-card.svg";
+import logo1 from "@images/landing/adventages/ic-delivery.svg";
+import logo3 from "@images/landing/adventages/ic-shield.svg";
+import Container from "@components/container";
+import { Paragraph, Title } from "@components/typography";
 
 const data = [
   {

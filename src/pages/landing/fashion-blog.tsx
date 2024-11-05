@@ -1,6 +1,7 @@
+import Container from "@components/container";
+import { Title } from "@components/typography";
 import { Button } from "antd";
-import Container from "../../components/container";
-import { Title } from "../../components/typography";
+
 
 function FashionBlog() {
   return (

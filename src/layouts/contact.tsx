@@ -1,11 +1,5 @@
-import Breadcumb from "../components/breadcumb";
-
 function Contact() {
-  return (
-    <>
-      <Breadcumb />
-    </>
-  );
+  return <></>;
 }
 
 export default Contact;

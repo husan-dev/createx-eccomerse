@@ -1,11 +1,5 @@
-import Breadcumb from "../components/breadcumb";
-
 function Track() {
-  return (
-    <>
-      <Breadcumb />
-    </>
-  );
+  return <></>;
 }
 
 export default Track;

@@ -10,16 +10,20 @@ import {
   Slider,
   Space,
 } from "antd";
-import Container from "../components/container";
-import Subscribe from "../components/layouts/subscribe";
+import Container from "@components/container";
+import { IoSearch } from "react-icons/io5";
+import Subscribe from "@components/layouts/subscribe";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { useMemo, useState } from "react";
 import clsx from "clsx";
 import { CiFilter } from "react-icons/ci";
-import Card from "../components/products-card";
+import Card from "@components/products-card";
 import { useForm } from "antd/es/form/Form";
 import { IoRemoveOutline } from "react-icons/io5";
+import BreadcrumbContainer from "@components/breadcrumb-container";
+import { Paragraph } from "@components/typography";
+import productStore from "@store/slices/products";
 
 const text = `
   A dog is a type of domesticated animal.
@@ -29,12 +33,6 @@ const text = `
 function Products() {
   const [hideFilter, setHideFilter] = useState(false);
   const [form] = useForm();
-  const [selectedColor, setSelectedColor] = useState(null);
-  const colors = ["#FF5733", "#33FF57", "#3357FF", "#FFC300", "#8E44AD"]; // Tanlov uchun ranglar
-
-  const handleColorChange = (e) => {
-    setSelectedColor(e.target.value);
-  };
 
   const items: CollapseProps["items"] = useMemo(
     () => [
@@ -49,12 +47,11 @@ function Products() {
         children: (
           <Radio.Group>
             <Space direction="vertical">
-              <Radio value={1}>XS</Radio>
-              <Radio value={2}>S</Radio>
-              <Radio value={3}>M</Radio>
-              <Radio value={4}>L</Radio>
-              <Radio value={5}>XL</Radio>
-              <Radio value={6}>Plus Size</Radio>
+              {productStore.sizes.map((item) => (
+                <Radio key={item.value} value={item.value}>
+                  {item.title}
+                </Radio>
+              ))}
             </Space>
           </Radio.Group>
         ),
@@ -63,48 +60,69 @@ function Products() {
         key: "3",
         label: <b>Color</b>,
         children: (
-          <Radio.Group onChange={handleColorChange} value={selectedColor}>
-            {colors.map((color) => (
-              <Radio
-                key={color}
-                value={color}
-                style={{
-                  backgroundColor: color,
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "50%",
-                  display: "inline-block",
-                  margin: "0 8px",
-                  border:
-                    selectedColor === color
-                      ? "2px solid black"
-                      : "1px solid #ccc",
-                }}
-              />
+          <div className="grid grid-cols-4 gap-3 max-h-[180px] overflow-y-auto pe-5">
+            {productStore.colors.map((item) => (
+              <div className="flex flex-col justiy-center">
+                <div
+                  key={item.value}
+                  className="flex items-center justify-center w-full p-1 border rounded-full cursor-pointer aspect-square"
+                >
+                  <span
+                    className={`p-3 w-full aspect-square rounded-full border`}
+                    style={{ backgroundColor: item.color }}
+                  ></span>
+                </div>
+                <Paragraph className="!m-0 text-center text-xs">
+                  {item.title}
+                </Paragraph>
+              </div>
             ))}
-          </Radio.Group>
+          </div>
         ),
       },
       {
         key: "4",
         label: <b>Material</b>,
         children: (
-          <Radio.Group>
-            <Space direction="vertical">
-              <Radio value={1}> Cotton</Radio>
-              <Radio value={2}>Synthetics</Radio>
-              <Radio value={3}>Nappa leather</Radio>
-              <Radio value={4}>Leather</Radio>
-              <Radio value={5}>Cashmere</Radio>
-              <Radio value={6}>Denim</Radio>
-            </Space>
-          </Radio.Group>
+          <>
+            <Input
+              placeholder="search materail type "
+              suffix={<IoSearch />}
+              className="w-full !rounded-sm mb-5"
+            />
+            <Radio.Group className="max-h-[180px] overflow-y-auto w-full">
+              <Space direction="vertical">
+                {productStore.materials.map((item) => (
+                  <Radio key={item.value} value={item.value}>
+                    {item.title}
+                  </Radio>
+                ))}
+              </Space>
+            </Radio.Group>
+          </>
         ),
       },
       {
         key: "5",
         label: <b>Brand</b>,
-        children: <div>{text}</div>,
+        children: (
+          <>
+            <Input
+              suffix={<IoSearch />}
+              className="w-full !rounded-sm mb-5"
+              placeholder="Search Brand"
+            />
+            <Radio.Group className="max-h-[180px] overflow-y-auto w-full">
+              <Space direction="vertical">
+                {productStore.brands.map((item) => (
+                  <Radio key={item.value} value={item.value}>
+                    {item.title}
+                  </Radio>
+                ))}
+              </Space>
+            </Radio.Group>
+          </>
+        ),
       },
       {
         key: "6",
@@ -125,9 +143,10 @@ function Products() {
   );
   return (
     <>
+      <BreadcrumbContainer />
       <Container className="py-6 ">
-        <div className="grid grid-cols-4 gap-6 ">
-          <div className="pe-5">
+        <div className="grid grid-cols-4 gap-4 md:gap-5 lg:gap-6 ">
+          <div className="lg:pe-5">
             <Button
               size="large"
               icon={<CiFilter />}
@@ -156,9 +175,9 @@ function Products() {
           </Form>
         </div>
 
-        <div className="relative grid grid-cols-4 gap-6">
+        <div className="relative grid grid-cols-1 gap-4 md:gap-5 lg:gap-6 md:grid-cols-3 lg:grid-cols-4">
           <div
-            className={`!sticky top-0 col-span-1 pe-5 ${clsx({
+            className={`md:!sticky md:top-0 col-span-1 lg:pe-5 ${clsx({
               hidden: hideFilter,
             })}`}
           >
@@ -179,13 +198,12 @@ function Products() {
             />
           </div>
           <div
-            className={` gap-6 ${
+            className={`gap-5 lg:gap-6 ${
               hideFilter
-                ? "col-span-4 grid grid-cols-4 "
-                : "col-span-3 grid grid-cols-3"
+                ? "col-span-4  grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 "
+                : "md:col-span-2 lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3"
             }`}
           >
-            <Card />
             <Card />
             <Card />
             <Card />

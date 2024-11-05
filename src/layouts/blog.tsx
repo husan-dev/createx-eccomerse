@@ -1,11 +1,5 @@
-import Breadcumb from "../components/breadcumb";
-
 function Blog() {
-  return (
-    <>
-      <Breadcumb />
-    </>
-  );
+  return <></>;
 }
 
 export default Blog;

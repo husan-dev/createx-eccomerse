@@ -4,9 +4,11 @@ export default {
   theme: {
     extend: {
       screens: {
-        sm: "576px",
+        sm: "640px",
         md: "768px",
-        "2xl": "992px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": 0,
       },
       colors: {
         main: "#17696A",
