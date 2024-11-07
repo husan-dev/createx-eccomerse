@@ -3,6 +3,12 @@ export interface ISelectedFilter {
   payload: string | null | [number, number];
   actionType: ActionTypes;
 }
+export interface ISelectedFilters {
+  key: "brand" | "size" | "color" | "material";
+  value: string | null | [number, number];
+}
+
+export type filterDataKey = "brand" | "size" | "color" | "material";
 
 export type ActionTypes =
   | "SET_SIZE"
@@ -18,7 +24,7 @@ export type Action =
   | { type: "SET_COLOR"; payload: string | null }
   | { type: "SET_MATERIAL"; payload: string | null };
 
-export type State = {
+export type TFilterData = {
   price: [number, number] | null;
   brand: string | null;
   color: string | null;

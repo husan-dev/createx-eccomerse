@@ -32,6 +32,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
 import Loading from "@components/loading";
+import ProductsClean from "@layouts/products-clean";
 
 const querycClient = new QueryClient();
 function App() {
@@ -90,6 +91,7 @@ const routes = createBrowserRouter([
           { path: "track", element: <Track /> },
           { path: "checkout", element: <Checkout /> },
           { path: "products", element: <Products /> },
+          { path: "products-clean", element: <ProductsClean /> },
           { path: "sign-up", element: <SignUp /> },
           { path: "sign-in", element: <SignIn /> },
         ],

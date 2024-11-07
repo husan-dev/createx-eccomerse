@@ -1,5 +1,62 @@
+import { filterDataKey, ISelectedFilters, TFilterData } from "@typess/products";
 import { makeAutoObservable } from "mobx";
 class ProductsStore {
+  filterData: TFilterData = {
+    price: null,
+    brand: null,
+    color: null,
+    material: null,
+    size: null,
+  };
+  setFilerData<K extends keyof TFilterData>(key: K, value: TFilterData[K]) {
+    this.filterData[key] = value;
+  }
+
+  resetFilterData() {
+    this.filterData = {
+      price: null,
+      brand: null,
+      color: null,
+      material: null,
+      size: null,
+    };
+  }
+
+  hideFilter = false;
+
+  toggleHideFilter() {
+    this.hideFilter = !this.hideFilter;
+  }
+
+  selectedFilters: ISelectedFilters[] = [];
+
+  resetSelectedFilter() {
+    this.selectedFilters = [];
+  }
+  deleteSelectedFilter(key: filterDataKey) {
+    this.selectedFilters = this.selectedFilters.filter(
+      (item) => item.key !== key
+    );
+  }
+  updateSelectedFilters(key: filterDataKey, value: string | [number, number]) {
+    const isTrue = this.selectedFilters.some((item) => item.key === key);
+    const newSelectedFilters = isTrue
+      ? this.selectedFilters.map((item) => {
+          if (item.key === key) {
+            return { ...item, value };
+          }
+          return item;
+        })
+      : [
+          ...this.selectedFilters,
+          {
+            key,
+            value,
+          },
+        ];
+    this.selectedFilters = newSelectedFilters;
+  }
+
   materials = [
     { value: "cotton", title: "Cotton" },
     { value: "cashmere", title: "Cashmere" },
@@ -54,7 +111,6 @@ class ProductsStore {
     { title: "Silver", value: "silver", color: "#D3D3D3" }, // iliq kumushrang
     { title: "Gold", value: "gold", color: "#FFD966" }, // iliq oltin
   ];
-
   brands = [
     { title: "Adidas", value: "adidas" },
     { title: "Puma", value: "puma" },
@@ -87,7 +143,7 @@ class ProductsStore {
     { title: "Diesel", value: "diesel" },
     { title: "Mango", value: "mango" },
   ];
-
+  filterBrands = [];
   constructor() {
     makeAutoObservable(this);
   }

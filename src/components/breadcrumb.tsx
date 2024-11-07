@@ -15,7 +15,7 @@ function Breadcrumb() {
     <div className="flex items-center">
       {items.map((item, index) => {
         return (
-          <>
+          <div key={index}>
             {index !== 0 && (
               <Paragraph className="!m-0 text-black !inline-block">
                 <FaAngleRight />
@@ -31,7 +31,7 @@ function Breadcrumb() {
             >
               {item.title}
             </Paragraph>
-          </>
+          </div>
         );
       })}
     </div>
