@@ -79,5 +79,89 @@
       "goTop": "yuqoriga o'tish",
       "copyRight": "Barcha huquqlar himoyalangan. Createx Studio tomonidan yaratilgan"
     }
+  },
+  "contact": {
+    "contact-us": {
+      "title": "Biz bilan bog'lanish",
+      "heading": "Agar sizda biron savol, tashvish yoki izohlar bo'lsa, biz sizdan eshitishni istaymiz! Quyidagi usullardan foydalanib so'rovingizni yuboring:",
+      "phone": "Telefon",
+      "email": "Bizga email orqali yuboring",
+      "manager": "Menejer bilan bog'laning",
+      "twitter": "Twitter orqali yozing",
+      "orText": "Yoki quyidagi formani to'ldirib biz bilan bog'laning:",
+      "form": {
+        "fullName": {
+          "label": "To'liq ismingiz",
+          "placeholder": "to'liq ismingiz"
+        },
+        "email": {
+          "label": "Elektron pochta",
+          "placeholder": "ishchi emailingiz"
+        },
+        "phone": {
+          "label": "Telefon",
+          "placeholder": "telefon raqamingiz"
+        },
+        "subject": {
+          "label": "Mavzu",
+          "placeholder": "Xabaringiz mavzusini kiriting"
+        },
+        "message": {
+          "label": "Xabar",
+          "placeholder": "Xabaringizni shu yerga yozing"
+        },
+        "sendButton": "Xabar yuboring"
+      }
+    },
+    "outlet-stores": { "title": "Savdo do'konlari" },
+    "faq": { "title": "FAQ" }
+  },
+  "auth": {
+    "orSign": "Or sign in with",
+    "signIn": {
+      "title": "Kirish",
+      "description": "Ro'yxatdan o'tishda ko'rsatilgan elektron pochta va parol orqali hisobingizga kiring.",
+      "form": {
+        "email": {
+          "label": "Elektron pochta",
+          "placeholder": "Elektron pochtangiz"
+        },
+        "password": {
+          "label": "Parol",
+          "placeholder": "Parolingiz"
+        },
+        "keepSignedIn": "Meni tizimda saqlash",
+        "forgotPassword": "Parolni unutdingizmi?",
+        "signInButton": "Kirish",
+        "dontHaveAccount": "Hisobingiz yo'qmi?",
+        "signUpLink": "Ro'yxatdan o'tish"
+      }
+    },
+    "signUp": {
+      "title": "Ro'yxatdan o'tish",
+      "description": "Ro'yxatdan o'tish bir daqiqadan kamroq vaqt oladi, ammo bu sizga buyurtmalaringiz ustidan to'liq nazorat beradi.",
+      "form": {
+        "fullName": {
+          "label": "To'liq ism",
+          "placeholder": "To'liq ismingiz"
+        },
+        "email": {
+          "label": "Elektron pochta",
+          "placeholder": "Ishchi emailingiz"
+        },
+        "password": {
+          "label": "Parol",
+          "placeholder": "Parolingizni kiriting"
+        },
+        "confirmPassword": {
+          "label": "Parolni tasdiqlang",
+          "placeholder": "Parolingizni tasdiqlang"
+        },
+        "rememberMe": "Meni eslab qol",
+        "signInButton": "Kirish",
+        "alreadyHaveAccount": "Hisobingiz bormi?",
+        "signInLink": "Kirish"
+      }
+    }
   }
 }

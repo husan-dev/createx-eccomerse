@@ -3,50 +3,51 @@ import { Paragraph, Text, Title } from "@components/typography";
 import { useForm } from "antd/es/form/Form";
 import OrSignInWidth from "./or-sign-in-width";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function SignIn() {
   const [form] = useForm();
   const { lang } = useParams();
+  const { t } = useTranslation("", { keyPrefix: "auth.signIn" });
   return (
     <>
       <div className="mx-auto max-w-[500px] py-[50px]">
         <div className="px-5 pb-5">
           <Title className="text-center !font-semibold" level={2}>
-            Sign in
+            {t("title")}
           </Title>
-          <Paragraph className="text-center ">
-            Sign in to your account using email and password provided during
-            registration.
-          </Paragraph>
+          <Paragraph className="text-center ">{t("description")}</Paragraph>
           <Form form={form} layout="vertical">
-            <Form.Item name={"email"} label="Email">
+            <Form.Item name={"email"} label={t("form.email.label")}>
               <Input
                 className="rounded-sm"
                 size="large"
-                placeholder="Your working email"
+                placeholder={t("form.email.placeholder")}
                 type="email"
-              ></Input>
+              />
             </Form.Item>
-            <Form.Item name={"password"} label="Pasword">
+            <Form.Item name={"password"} label={t("form.password.label")}>
               <Input.Password
+                placeholder={t("form.password.placeholder")}
                 className="rounded-sm"
                 size="large"
-              ></Input.Password>
+              />
             </Form.Item>
             <div className="flex justify-between mb-5">
-              <Radio>Keep me signed in</Radio>
-              <Link to="/">Forgot Password?</Link>
+              <Radio>{t("form.keepSignedIn")}</Radio>
+              <Link to="/">{t("form.forgotPassword")}</Link>
             </div>
             <Button
               size="large"
               type="primary"
               className="w-full mb-5 rounded-sm"
             >
-              Sign In
+              {t("form.signInButton")}
             </Button>
           </Form>
           <Text className="!mb-5">
-            Dont hav account? <Link to={`/${lang}/sign-up`}> Sign up</Link>
+            {t("form.dontHaveAccount")}{" "}
+            <Link to={`/${lang}/sign-up`}> {t("form.signUpLink")}</Link>
           </Text>
         </div>
         <Divider className="!m-0" />

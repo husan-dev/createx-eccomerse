@@ -5,14 +5,13 @@ import { CiMail } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlineMessage } from "react-icons/md";
 import { TEL_NUMBER } from "@src/constants";
+import { useTranslation } from "react-i18next";
 
 function ContactUs() {
+  const { t } = useTranslation("", { keyPrefix: "contact.contact-us" });
   return (
     <div>
-      <Title className="!text-[20px] !mb-5">
-        If you have any questions, concerns or comments, we would love to hear
-        from you! Submit your query using any of the methods below:
-      </Title>
+      <Title className="!text-[20px] !mb-5">{t("heading")}</Title>
       <ul className="mb-5">
         {connections.map((item, index) => (
           <li key={index} className="flex items-center gap-2 !text-main mb-2">
@@ -22,56 +21,54 @@ function ContactUs() {
         ))}
       </ul>
 
-      <Title className="!text-[20px] !mb-5">
-        Or get in touch with us by completing the below form:
-      </Title>
+      <Title className="!text-[20px] !mb-5">{t("orText")}</Title>
       <Form
         layout="vertical"
         className="grid grid-cols-1 mt-8 sm:grid-cols-2 gap-x-7"
       >
-        <Form.Item label="Full Name" name="name">
+        <Form.Item label={t("form.fullName.label")} name="name">
           <Input
             size="large"
             className="!rounded-sm"
-            placeholder="your full name"
+            placeholder={t("form.fullName.placeholder")}
           />
         </Form.Item>
-        <Form.Item label="Email" name="email">
+        <Form.Item label={t("form.email.label")} name="email">
           <Input
             type="email"
             size="large"
             className="!rounded-sm"
-            placeholder="your working email"
+            placeholder={t("form.email.placeholder")}
           />
         </Form.Item>
-        <Form.Item label="Phone" name="phone">
+        <Form.Item label={t("form.phone.label")} name="phone">
           <Input
             size="large"
             className="!rounded-sm"
-            placeholder="your phone number"
+            placeholder={t("form.phone.placeholder")}
           />
         </Form.Item>
-        <Form.Item label="Subject" name="subject">
+        <Form.Item label={t("form.subject.label")} name="subject">
           <Input
             size="large"
             className="!rounded-sm"
-            placeholder="Title your message"
+            placeholder={t("form.subject.placeholder")}
           />
         </Form.Item>
         <Form.Item
           className="col-span-1 md:col-span-2"
-          label="Message"
+          label={t("form.message.label")}
           name="message"
         >
           <Input.TextArea
             size="large"
             className="!rounded-sm"
-            placeholder="Write your message here"
+            placeholder={t("form.message.placeholder")}
           />
         </Form.Item>
       </Form>
       <Button size="large" type="primary" className="!rounded-sm mt-5">
-        Send message
+        {t("form.sendButton")}
       </Button>
     </div>
   );

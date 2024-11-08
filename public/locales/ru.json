@@ -80,27 +80,88 @@
       "copyRight": "Все права защищены. Сделано в Createx Studio"
     }
   },
+  "contact": {
+    "contact-us": {
+      "title": "Связаться с нами",
+      "heading": "Если у вас есть вопросы, опасения или комментарии, мы будем рады их услышать! Отправьте ваш запрос, используя любой из методов ниже:",
+      "phone": "Телефон",
+      "email": "Отправьте нам по электронной почте",
+      "manager": "Связаться с менеджером",
+      "twitter": "Напишите нам в Твиттере",
+      "orText": "Или свяжитесь с нами, заполнив форму ниже:",
+      "form": {
+        "fullName": {
+          "label": "Полное имя",
+          "placeholder": "ваше полное имя"
+        },
+        "email": {
+          "label": "Электронная почта",
+          "placeholder": "ваша рабочая почта"
+        },
+        "phone": {
+          "label": "Телефон",
+          "placeholder": "ваш номер телефона"
+        },
+        "subject": {
+          "label": "Тема",
+          "placeholder": "Введите тему вашего сообщения"
+        },
+        "message": {
+          "label": "Сообщение",
+          "placeholder": "Напишите ваше сообщение здесь"
+        },
+        "sendButton": "Отправить сообщение"
+      }
+    },
+    "outlet-stores": { "title": "Магазины покупок" },
+    "faq": { "title": "FAQ" }
+  },
   "auth": {
     "orSign": "Or sign in with",
     "signIn": {
-      "title": "sign in",
-      "desc": "Sign in to your account using email and password provided during registration.",
-      "inputs": {
+      "title": "Войти",
+      "description": "Войдите в свой аккаунт, используя email и пароль, указанные при регистрации.",
+      "form": {
         "email": {
-          "label": "email",
-          "placeholder": "Your working email"
+          "label": "Электронная почта",
+          "placeholder": "Ваш email"
         },
         "password": {
-          "label": "password",
-          "placeholder": "Enter  password"
-        }
-      },
-      "button": "sign in"
+          "label": "Пароль",
+          "placeholder": "Ваш пароль"
+        },
+        "keepSignedIn": "Запомнить меня",
+        "forgotPassword": "Забыли пароль?",
+        "signInButton": "Войти",
+        "dontHaveAccount": "Нет аккаунта?",
+        "signUpLink": "Зарегистрироваться"
+      }
     },
     "signUp": {
-      "title": "sign up",
-      "desc": "Registration takes less than a minute but gives you full control over your orders.",
-      "inputs": {}
+      "title": "Регистрация",
+      "description": "Регистрация занимает меньше минуты, но дает вам полный контроль над вашими заказами.",
+      "form": {
+        "fullName": {
+          "label": "Полное имя",
+          "placeholder": "Ваше полное имя"
+        },
+        "email": {
+          "label": "Электронная почта",
+          "placeholder": "Ваш рабочий email"
+        },
+        "password": {
+          "label": "Пароль",
+          "placeholder": "Введите ваш пароль"
+        },
+        "confirmPassword": {
+          "label": "Подтвердите пароль",
+          "placeholder": "Подтвердите ваш пароль"
+        },
+        "rememberMe": "Запомнить меня",
+        "signInButton": "Войти",
+        "alreadyHaveAccount": "Уже есть аккаунт?",
+        "signInLink": "Войти"
+      }
     }
   },
 

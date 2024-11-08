@@ -80,5 +80,89 @@
       "goTop": "Go to Top",
       "copyRight": "All rights reserved. Made with by Createx Studio"
     }
+  },
+  "contact": {
+    "contact-us": {
+      "title": "Contact Us",
+      "heading": "If you have any questions, concerns or comments, we would love to hear from you! Submit your query using any of the methods below:",
+      "phone": "Phone",
+      "email": "send us as Email",
+      "manager": "Connect on Manager",
+      "twitter": "Tweet us",
+      "orText": "Or get in touch with us by completing the below form:",
+      "form": {
+        "fullName": {
+          "label": "Full Name",
+          "placeholder": "your full name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "your working email"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "your phone number"
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "Title your message"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Write your message here"
+        },
+        "sendButton": "Send message"
+      }
+    },
+    "outlet-stores": { "title": "Outlet Stores" },
+    "faq": { "title": "FAQ" }
+  },
+  "auth": {
+    "orSign": "Or sign in with",
+    "signIn": {
+      "title": "Sign in",
+      "description": "Sign in to your account using email and password provided during registration.",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "Your email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Your password"
+        },
+        "keepSignedIn": "Keep me signed in",
+        "forgotPassword": "Forgot Password?",
+        "signInButton": "Sign In",
+        "dontHaveAccount": "Don't have an account?",
+        "signUpLink": "Sign up"
+      }
+    },
+    "signUp": {
+      "title": "Sign up",
+      "description": "Registration takes less than a minute but gives you full control over your orders.",
+      "form": {
+        "fullName": {
+          "label": "Full Name",
+          "placeholder": "Your full name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Your working email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password"
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "Confirm your password"
+        },
+        "rememberMe": "Remember me",
+        "signInButton": "Sign In",
+        "alreadyHaveAccount": "Already have an account?",
+        "signInLink": "Sign in"
+      }
+    }
   }
 }

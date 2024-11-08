@@ -1,10 +1,12 @@
 import Container from "@components/container";
 import { Title } from "@components/typography";
+import { useTranslation } from "react-i18next";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 function Contact() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation("", { keyPrefix: "contact" });
   return (
     <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 my-[60px]">
       <div className="col-span-5 ">
@@ -16,7 +18,7 @@ function Contact() {
             onClick={() => navigate(item.path)}
             key={item.path}
           >
-            {item.title}
+            {t(item.path + ".title")}
           </Title>
         ))}
       </div>
