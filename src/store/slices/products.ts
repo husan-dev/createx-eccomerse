@@ -1,6 +1,7 @@
 import { filterDataKey, ISelectedFilters, TFilterData } from "@typess/products";
 import { makeAutoObservable } from "mobx";
 class ProductsStore {
+  //filterData
   filterData: TFilterData = {
     price: null,
     brand: null,
@@ -8,6 +9,7 @@ class ProductsStore {
     material: null,
     size: null,
   };
+
   setFilerData<K extends keyof TFilterData>(key: K, value: TFilterData[K]) {
     this.filterData[key] = value;
   }
@@ -22,12 +24,14 @@ class ProductsStore {
     };
   }
 
+  //hide filter
   hideFilter = false;
 
   toggleHideFilter() {
     this.hideFilter = !this.hideFilter;
   }
 
+  //selectedFilters
   selectedFilters: ISelectedFilters[] = [];
 
   resetSelectedFilter() {
@@ -57,6 +61,12 @@ class ProductsStore {
     this.selectedFilters = newSelectedFilters;
   }
 
+  searchMaterailInput: string = "";
+  setSearchMaterialInput(value: string) {
+    this.searchMaterailInput = value;
+  }
+
+  //other data
   materials = [
     { value: "cotton", title: "Cotton" },
     { value: "cashmere", title: "Cashmere" },

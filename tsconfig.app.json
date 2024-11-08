@@ -27,7 +27,8 @@
       "@api/*": ["src/api/*"],
       "@store/*": ["src/store/*"],
       "@typess/*": ["src/types/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@src/*": ["src/*"]
     }
   },
   "include": ["src"]

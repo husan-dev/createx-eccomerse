@@ -20,6 +20,7 @@ const socialIcons = [
   <FaYoutube />,
   <FaPinterestP />,
 ];
+const AppClassName = "cursor-pointer hover:scale-105 transition-all";
 
 function Footer({ className }: { className?: string }) {
   const { t } = useTranslation("", { keyPrefix: "landingPage.footer" });
@@ -45,30 +46,34 @@ function Footer({ className }: { className?: string }) {
         </div>
         <div>
           <Paragraph className="font-bold text-white uppercase">
-            Informations
+            {t("information.title")}
           </Paragraph>
           <ul className="text-gray-500">
-            <li>New arrivals</li>
-            <li>Trending now</li>
+            <li>{t("information.newArrivals")}</li>
+            <li>{t("information.trandingNow")}</li>
             <li>Sales</li>
-            <li>Brands</li>
+            <li>{t("information.brands")}</li>
           </ul>
         </div>
         <div>
           <Paragraph className="font-bold text-white uppercase">
-            get in touch
+            {t("getInTouch.title")}
           </Paragraph>
           <ul className="text-gray-500">
             <li>
               <Link to={"/"}>
-                <span className="font-[400] text-slate-300">Call</span> :{" "}
-                {TEL_NUMBER}
+                <span className="font-[400] text-slate-300">
+                  {t("getInTouch.call")}
+                </span>{" "}
+                : {TEL_NUMBER}
               </Link>
             </li>
             <li>
               <Link to={"/" + EMAIL}>
-                <span className="font-[400] text-slate-300">Email</span>:{" "}
-                {EMAIL}
+                <span className="font-[400] text-slate-300">
+                  {t("getInTouch.email")}
+                </span>
+                : {EMAIL}
               </Link>
             </li>
             <li>
@@ -86,13 +91,13 @@ function Footer({ className }: { className?: string }) {
         </div>
         <div className="col-span-2 sm:col-span-1">
           <Paragraph className="font-bold text-white uppercase">
-            Download our app
+            {t("download.title")}
           </Paragraph>
           <ul className="text-gray-500">
             <li>
               <Space>
-                <img src={aplleLogo} alt="" />
-                <img src={playMarketLogo} alt="" />
+                <img className={AppClassName} src={aplleLogo} alt="" />
+                <img className={AppClassName} src={playMarketLogo} alt="" />
               </Space>
             </li>
           </ul>
@@ -100,9 +105,7 @@ function Footer({ className }: { className?: string }) {
       </Container>
       <Divider className="bg-slate-700 !mb-0" />
       <Container className="flex items-center justify-between py-4">
-        <Text className="!text-gray-500">
-          © All rights reserved. Made with by Createx Studio{" "}
-        </Text>
+        <Text className="!text-gray-500">© {t("copyRight")}</Text>
         <Text
           onClick={goTop}
           className="!text-gray-500 font-semibold hidden md:block duration-300 hover:!text-white cursor-pointer"

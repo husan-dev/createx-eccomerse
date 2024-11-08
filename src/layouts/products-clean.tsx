@@ -13,7 +13,7 @@ const ProductsClean = observer(() => {
   console.log(
     toJS(productsStore.selectedFilters),
     toJS(productsStore.filterData),
-    "asasa"
+    "asasa2"
   );
   return (
     <>
@@ -89,7 +89,10 @@ const ProductsClean = observer(() => {
         </div>
 
         <div className="relative grid grid-cols-1 gap-4 md:gap-5 lg:gap-6 md:grid-cols-3 lg:grid-cols-4">
-          <FilterPanel />
+          <div className="!sticky !top-0">
+            <FilterPanel />
+          </div>
+
           <div
             className={`gap-5 lg:gap-6 ${
               productsStore.hideFilter

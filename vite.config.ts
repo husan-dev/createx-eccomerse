@@ -12,6 +12,7 @@ export default defineConfig({
       "@typess": path.resolve(__dirname, "./src/types"),
       "@store": path.resolve(__dirname, "./src/store"),
       "@layouts": path.resolve(__dirname, "./src/layouts"),
+      "@src": path.resolve(__dirname, "./src"),
     },
   },
   plugins: [react()],

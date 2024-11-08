@@ -80,6 +80,10 @@ const FilterPanel = observer(() => {
         children: (
           <>
             <Input
+              value={productsStore.searchMaterailInput}
+              onChange={(e) =>
+                productsStore.setSearchMaterialInput(e.target.value)
+              }
               placeholder="search materail type "
               suffix={<IoSearch />}
               className="w-full !rounded-sm mb-5"
@@ -191,7 +195,7 @@ const FilterPanel = observer(() => {
   );
   return (
     <div
-      className={`md:!sticky md:top-0 col-span-1 lg:pe-5 ${clsx({
+      className={`col-span-1 lg:pe-5 ${clsx({
         hidden: productsStore.hideFilter,
       })}`}
     >

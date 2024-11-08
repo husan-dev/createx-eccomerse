@@ -41,7 +41,21 @@
       }
     },
     "followInstagram": {
-      "title": ""
+      "title": "Follow us on Instagram",
+      "button": "Follow Instagram"
+    },
+    "subscribe": {
+      "title": "Subscribe for updates",
+      "desc": "Subscribe for exclusive early sale access and new arrivals.",
+      "categories": {
+        "women": "women",
+        "men": "men",
+        "girls": "girls",
+        "boys": "boys"
+      },
+      "inputPlaceholder": "Enter email",
+      "subscribe": "Subscribe",
+      "agree": "I agree to receive communications from Createx Store."
     },
     "footer": {
       "help": {
@@ -55,13 +69,16 @@
         "newArrivals": "New Arrivals",
         "trandingNow": "Tranding Now",
         "sales": "Sales",
-        "Brands": "Brands"
+        "brands": "Brands"
       },
       "getInTouch": {
-        "title": "Get in Touch"
+        "title": "Get in Touch",
+        "call": "Call",
+        "email": "Email"
       },
-      "download": { "title": "Download our app" }
-    },
-    "goTop": "Go to Top"
+      "download": { "title": "Download our app" },
+      "goTop": "Go to Top",
+      "copyRight": "All rights reserved. Made with by Createx Studio"
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { ConfigProvider as AntProvider } from "antd";
 import {
   createBrowserRouter,
+  Navigate,
   Outlet,
   RouterProvider,
   useParams,
@@ -15,7 +16,6 @@ import Track from "@layouts/track";
 import SignUp from "@pages/authentication/sign-up";
 import SignIn from "@pages/authentication/sign-in";
 import Checkout from "@layouts/checkout";
-import Products from "@layouts/products";
 import MyOrders from "@pages/my-profile/my-orders";
 import Wishlist from "@pages/my-profile/wishlist";
 import MyReviews from "@pages/my-profile/my-reviews";
@@ -33,6 +33,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
 import Loading from "@components/loading";
 import ProductsClean from "@layouts/products-clean";
+import ContactUs from "@pages/contacts/contact-us";
+import OutletStores from "@pages/contacts/outlet-stores";
+import Faq from "@pages/contacts/faq";
 
 const querycClient = new QueryClient();
 function App() {
@@ -76,7 +79,16 @@ const routes = createBrowserRouter([
         element: <Layout />,
         children: [
           { path: "", index: true, element: <Landing /> },
-          { path: "contacts", element: <Contact /> },
+          {
+            path: "contacts",
+            element: <Contact />,
+            children: [
+              { path: "", element: <Navigate to={"contact-us"} /> },
+              { path: "contact-us", element: <ContactUs /> },
+              { path: "outlet-stores", element: <OutletStores /> },
+              { path: "faq", element: <Faq /> },
+            ],
+          },
           { path: "blog", element: <Blog /> },
           {
             path: "product",
@@ -90,8 +102,7 @@ const routes = createBrowserRouter([
 
           { path: "track", element: <Track /> },
           { path: "checkout", element: <Checkout /> },
-          { path: "products", element: <Products /> },
-          { path: "products-clean", element: <ProductsClean /> },
+          { path: "products", element: <ProductsClean /> },
           { path: "sign-up", element: <SignUp /> },
           { path: "sign-in", element: <SignIn /> },
         ],

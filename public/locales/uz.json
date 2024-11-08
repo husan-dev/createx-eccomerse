@@ -40,6 +40,23 @@
         "desc": "Barcha asosiy kredit kartalarini qabul qilamiz"
       }
     },
+    "followInstagram": {
+      "title": "Bizni Instagramda kuzatib boring",
+      "button": "Instagramda obuna bo'lish"
+    },
+    "subscribe": {
+      "title": "Yangilanishlarga obuna bo'ling",
+      "desc": "Eksklyuziv erta sotuvga kirish va yangi kelganlar uchun obuna bo'ling.",
+      "categories": {
+        "women": "ayollar",
+        "men": "erkaklar",
+        "girls": "qizilar",
+        "boys": "bolalar"
+      },
+      "inputPlaceholder": "Email ni kiriting",
+      "subscribe": "Obuna bo'lish",
+      "agree": "Men Createx do'konidan xabar olishga roziman."
+    },
     "footer": {
       "help": {
         "title": "Yordam",
@@ -51,13 +68,16 @@
         "title": "Malumotlar",
         "newArrivals": "Yangi kelganlar",
         "trandingNow": "Hozirgi Trendlar",
-        "Brands": "Brendlar"
+        "brands": "Brendlar"
       },
       "getInTouch": {
-        "title": "Bog'lanish"
+        "title": "Bog'lanish",
+        "call": "Tel",
+        "email": "ePochta"
       },
-      "download": { "title": "Ilovamizni yuklab oling" }
-    },
-    "goTop": "yuqoriga o'tish"
+      "download": { "title": "Ilovamizni yuklab oling" },
+      "goTop": "yuqoriga o'tish",
+      "copyRight": "Barcha huquqlar himoyalangan. Createx Studio tomonidan yaratilgan"
+    }
   }
 }

@@ -6,20 +6,22 @@ import { FaRegUser } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import uz from "../../../public/images/flags/uz.svg";
-import ru from "../../../public/images/flags/ru.svg";
-import en from "../../../public/images/flags/en.svg";
+import uz from "@images/flags/uz.svg";
+import ru from "@images/flags/ru.svg";
+import en from "@images/flags/en.svg";
 import { useCallback, useMemo } from "react";
 
 function Header1() {
   const navigate = useNavigate();
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation("", {
+    keyPrefix: "landingPage.header.section1",
+  });
   const location = useLocation();
   const departments = useMemo(
     () => [
-      { title: t("landingPage.header.section1.track"), slug: "track" },
-      { title: t("landingPage.header.section1.blog"), slug: "blog" },
-      { title: t("landingPage.header.section1.contacts"), slug: "contacts" },
+      { title: t("track"), slug: "track" },
+      { title: t("blog"), slug: "blog" },
+      { title: t("contacts"), slug: "contacts" },
     ],
     [t]
   );
@@ -108,7 +110,7 @@ function Header1() {
             }}
             className="!mb-0 text-gray-500 cursor-pointer flex gap-2 items-center"
           >
-            <FaRegUser /> {t("landingPage.header.section1.login-register")}
+            <FaRegUser /> {t("login-register")}
           </Paragraph>
         </Space>
       </Container>

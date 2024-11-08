@@ -5,16 +5,20 @@ import { FaInstagram } from "react-icons/fa6";
 import image3 from "@images/landing/follow-instagram/image.svg";
 import image2 from "@images/landing/follow-instagram/image-1.svg";
 import image1 from "@images/landing/follow-instagram/image-2.svg";
+import { useTranslation } from "react-i18next";
 
 const images = [image1, image2, image3];
 
 function FollowInstagram() {
+  const { t } = useTranslation("", {
+    keyPrefix: "landingPage.followInstagram",
+  });
   return (
     <Container className="flex flex-col md:flex-row gap-5 justify-between my-[100px] lg:my-[180px]">
       <div className="w-full lg:w-[300px] flex items-center">
         <div>
           <Title level={4} className="!font-normal !text-lg uppercase">
-            Follow us on Instagram
+            {t("title")}
           </Title>
           <Title className="!font-bold !mt-0 !text-4xl">@createx_store</Title>
           <div className="grid grid-cols-3 gap-5 py-[20px] justify-evenly lg:hidden">
@@ -32,7 +36,7 @@ function FollowInstagram() {
             icon={<FaInstagram />}
             size="large"
           >
-            Follow Instagram
+            {t("button")}
           </Button>
         </div>
       </div>
