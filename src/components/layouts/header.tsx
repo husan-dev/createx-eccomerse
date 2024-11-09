@@ -1,7 +1,7 @@
 import Container from "../container";
 import logo from "../../../public/images/logo.svg";
 import { Paragraph, Title } from "../typography";
-import { Button, Divider, Drawer, Input, Space, Tag } from "antd";
+import { Button, Divider, Drawer, Empty, Input, Space, Tag } from "antd";
 import { GoCreditCard } from "react-icons/go";
 import { IoSearch } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
@@ -17,6 +17,7 @@ function Header({ className }: { className?: string }) {
   const { t } = useTranslation("", {
     keyPrefix: "landingPage.header.section2",
   });
+  const [searchDiv, setSearchDiv] = useState(false);
   const [dCategory, setDCategory] = useState(false);
   const isCartOpen = !!searchParams.get("cart");
 
@@ -45,9 +46,9 @@ function Header({ className }: { className?: string }) {
               <Space className="hidden xl:flex gap-[40px]">
                 {category.map((item, index) => (
                   <Paragraph
-                    onClick={() => {
-                      setDCategory(!dCategory);
-                    }}
+                    tabIndex={-1}
+                    onFocus={() => setDCategory(true)}
+                    onBlur={() => setDCategory(false)}
                     className="font-semibold text-[16px] capitalize cursor-pointer !mb-0"
                     key={index}
                   >
@@ -57,12 +58,21 @@ function Header({ className }: { className?: string }) {
               </Space>
             </div>
             <div className="flex gap-8">
-              <Input
-                size="large"
-                placeholder="Search for products"
-                className="w-[380px] !rounded-none hidden  md:flex"
-                suffix={<IoSearch />}
-              />
+              <div className="relative w-[380px] ">
+                <Input
+                  size="large"
+                  onFocus={() => setSearchDiv(true)}
+                  onBlur={() => setTimeout(() => setSearchDiv(false), 0)}
+                  placeholder="Search for products"
+                  className="!rounded-none hidden w-full  md:flex"
+                  suffix={<IoSearch />}
+                />
+                {searchDiv && (
+                  <div className="absolute hidden w-full p-2 bg-white border rounded-sm shadow-lg md:block top-14 ">
+                    <Empty />
+                  </div>
+                )}
+              </div>
 
               <Space className="hidden md:flex">
                 <Space
@@ -85,14 +95,17 @@ function Header({ className }: { className?: string }) {
             </div>
           </Container>
           <Divider className="!m-0" />
+          {dCategory && (
+            <div
+              className={`absolute h-screen -top-[42px] bg-black bg-opacity-50 -z-[40]
+               w-full `}
+            ></div>
+          )}
           <div
-            className={`absolute h-screen ${
-              !dCategory ? "hidden" : "bg-black bg-opacity-50 -z-[40]"
-            } w-full `}
-          ></div>
-          <div
-            className={`absolute duration-500 ease-in-out -z-[10] w-full p-10 transform transition-transform ${
-              dCategory ? "translate-y-0" : "-translate-y-full"
+            className={`absolute -z-[10] w-full p-10 ${
+              dCategory
+                ? "translate-y-0  duration-500 ease-in-out  transform transition-transform"
+                : "-translate-y-full"
             } bg-white border`}
           >
             adasdsdas dasd as dasD AS

@@ -1,7 +1,7 @@
 import { Dropdown, Menu, Space } from "antd";
 import Container from "../container";
 import { Paragraph } from "../typography";
-import { TEL_NUMBER } from "../../constants";
+import { TEL_NUMBER, WORKDAYS } from "../../constants";
 import { FaRegUser } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ function Header1() {
     <div className="hidden bg-gray-900 md:block">
       <Container className="flex justify-between py-2">
         <Paragraph className="!text-gray-500 !mb-0">
-          {`Available 24/7 at ${TEL_NUMBER}`}
+          {t("phone", { workDays: WORKDAYS, number: TEL_NUMBER })}
         </Paragraph>
         <Space className="hidden lg:flex" size={"large"}>
           {departments.map((item, index) => (

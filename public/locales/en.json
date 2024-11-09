@@ -5,7 +5,8 @@
         "track": "Track orders ",
         "blog": "Blog",
         "contacts": "Contact",
-        "login-register": "Log in / Registor"
+        "login-register": "Log in / Registor",
+        "phone": "Available at {{workDays}} {{number}}"
       },
       "section2": {
         "womens": "Womens",

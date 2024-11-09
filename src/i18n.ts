@@ -18,6 +18,9 @@ i18n
     backend: {
       loadPath: "/locales/{{lng}}.json",
     },
+    interpolation: {
+      escapeValue: false,
+    },
   });
 
 export default i18n;

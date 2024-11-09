@@ -5,7 +5,8 @@
         "track": "Отслеживать заказ",
         "blog": "Блог",
         "contacts": "Контакты",
-        "login-register": "Войти / Зарегистрироваться"
+        "login-register": "Войти / Зарегистрироваться",
+        "phone": "доступен {{workDays}}  {{number}}"
       },
       "section2": {
         "womens": "Женщины",

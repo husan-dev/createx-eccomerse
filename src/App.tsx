@@ -97,6 +97,7 @@ function Routes() {
               path: "product",
               element: <Product />,
               children: [
+                { path: "", element: <Navigate to={"general-info"} /> },
                 { path: "general-info", element: <ProductInfo /> },
                 { path: "detalis", element: <ProductDetalis /> },
                 { path: "reviews", element: <ProductReviews /> },

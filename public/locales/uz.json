@@ -5,7 +5,8 @@
         "track": "Trek",
         "blog": "Blog",
         "contacts": "Kontaktlar",
-        "login-register": "Kirish/ Ro'yxatdan o'tish"
+        "login-register": "Kirish/ Ro'yxatdan o'tish",
+        "phone": "{workDays}} {{number}} raqamida mavjud"
       },
       "section2": {
         "womens": "ayollar",

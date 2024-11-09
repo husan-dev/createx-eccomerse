@@ -1,10 +1,11 @@
 import { Button, Divider, Space } from "antd";
 import { Title } from "../components/typography";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Container from "../components/container";
 
 function Product() {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <Container className="py-[50px]">
       <Title level={3}>Basic hooded sweatshirt in pink</Title>
@@ -14,7 +15,11 @@ function Product() {
             onClick={() => navigate(item.path)}
             size="large"
             color="danger"
-            className="rounded-md "
+            className={`rounded-md ${
+              location.pathname.includes(item.path)
+                ? "border-main text-main"
+                : ""
+            } `}
             key={item.path}
           >
             {item.title}
