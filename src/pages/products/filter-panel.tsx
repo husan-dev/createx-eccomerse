@@ -3,6 +3,7 @@ import productsStore from "@store/slices/products";
 import {
   Collapse,
   CollapseProps,
+  Empty,
   Input,
   InputNumber,
   Radio,
@@ -10,18 +11,31 @@ import {
   Space,
 } from "antd";
 import clsx from "clsx";
+import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoRemoveOutline, IoSearch } from "react-icons/io5";
 
 const FilterPanel = observer(() => {
+  console.log(
+    toJS(productsStore.searchMaterialInput),
+    productsStore.searchMaterialData[0]
+  );
   const items: CollapseProps["items"] = useMemo(
     () => [
       {
         key: "1",
         label: <b>Clothes</b>,
-        children: <div>{""}</div>,
+        children: (
+          <>
+            <Input
+              suffix={<IoSearch />}
+              className="w-full !rounded-sm mb-5"
+              placeholder="Search Brand"
+            />
+          </>
+        ),
       },
       {
         key: "2",
@@ -80,11 +94,11 @@ const FilterPanel = observer(() => {
         children: (
           <>
             <Input
-              value={productsStore.searchMaterailInput}
+              defaultValue={productsStore.searchMaterialInput}
               onChange={(e) =>
                 productsStore.setSearchMaterialInput(e.target.value)
               }
-              placeholder="search materail type "
+              placeholder="search material type"
               suffix={<IoSearch />}
               className="w-full !rounded-sm mb-5"
             />
@@ -97,11 +111,21 @@ const FilterPanel = observer(() => {
               className="max-h-[180px] overflow-y-auto w-full"
             >
               <Space direction="vertical">
-                {productsStore.materials.map((item) => (
-                  <Radio key={item.value} value={item.value}>
-                    {item.title}
-                  </Radio>
-                ))}
+                {productsStore.searchMaterialInput.length !== 0 ? (
+                  productsStore.searchMaterialData.map((item) => (
+                    <Radio key={item.value} value={item.value}>
+                      {item.title}
+                    </Radio>
+                  ))
+                ) : productsStore.searchMaterialData.length === 0 ? (
+                  <Empty className="w-full" />
+                ) : (
+                  productsStore.materials.map((item) => (
+                    <Radio key={item.value} value={item.value}>
+                      {item.title}
+                    </Radio>
+                  ))
+                )}
               </Space>
             </Radio.Group>
           </>
@@ -113,9 +137,11 @@ const FilterPanel = observer(() => {
         children: (
           <>
             <Input
-              //   defaultValue={filBrandInput}
+              defaultValue={productsStore.searchBrandInput}
+              onChange={(e) =>
+                productsStore.setSearchBrandInput(e.target.value)
+              }
               suffix={<IoSearch />}
-              //   onChange={(e) => setFilBrandInput(e.target.value)}
               className="w-full !rounded-sm mb-5"
               placeholder="Search Brand"
             />
@@ -129,11 +155,21 @@ const FilterPanel = observer(() => {
                 className="max-h-[180px] overflow-y-auto w-full"
               >
                 <Space direction="vertical">
-                  {productsStore.brands.map((item) => (
-                    <Radio key={item.value} value={item.value}>
-                      {item.title}
-                    </Radio>
-                  ))}
+                  {productsStore.searchBrandInput.length !== 0 ? (
+                    productsStore.searchBrandData.map((item) => (
+                      <Radio key={item.value} value={item.value}>
+                        {item.title}
+                      </Radio>
+                    ))
+                  ) : productsStore.searchBrandData.length === 0 ? (
+                    <Empty className="w-full" />
+                  ) : (
+                    productsStore.brands.map((item) => (
+                      <Radio key={item.value} value={item.value}>
+                        {item.title}
+                      </Radio>
+                    ))
+                  )}
                 </Space>
               </Radio.Group>
             )}
@@ -191,6 +227,8 @@ const FilterPanel = observer(() => {
       productsStore.filterData.color,
       productsStore.filterData.material,
       productsStore.filterData.price,
+      productsStore.searchMaterialInput,
+      productsStore.searchBrandInput,
     ]
   );
   return (

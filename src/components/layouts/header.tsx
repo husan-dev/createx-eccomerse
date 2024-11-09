@@ -29,7 +29,7 @@ function Header({ className }: { className?: string }) {
 
   return (
     <>
-      <div className={`md:!sticky top-0 z-50 ${className}`}>
+      <div className={`!sticky top-0 z-50 ${className}`}>
         <Header1 />
         <div className="relative bg-white ">
           <Container className="flex items-center justify-between py-4 ">
@@ -42,7 +42,7 @@ function Header({ className }: { className?: string }) {
                 src={logo}
                 alt=""
               />
-              <Space className=" hidden xl:flex gap-[40px]">
+              <Space className="hidden xl:flex gap-[40px]">
                 {category.map((item, index) => (
                   <Paragraph
                     onClick={() => {

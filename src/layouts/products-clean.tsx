@@ -4,53 +4,15 @@ import FilterPanel from "@pages/products/filter-panel";
 import ProductList from "@pages/products/product-list";
 import productsStore from "@store/slices/products";
 import { Button, Form, InputNumber, Select, Space } from "antd";
-import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import { CiFilter } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
 const ProductsClean = observer(() => {
-  console.log(
-    toJS(productsStore.selectedFilters),
-    toJS(productsStore.filterData),
-    "asasa2"
-  );
   return (
     <>
       <BreadcrumbContainer className="flex justify-between">
-        <Space>
-          {productsStore.selectedFilters.map(
-            (item) =>
-              item.value && (
-                <Button
-                  key={item.key}
-                  onClick={() => {
-                    productsStore.setFilerData(item.key, null);
-                    productsStore.deleteSelectedFilter(item.key);
-                  }}
-                  size="small"
-                  type="text"
-                  icon={<IoMdClose />}
-                  className=""
-                >
-                  {item.value}
-                </Button>
-              )
-          )}
-          {productsStore.selectedFilters.length > 1 && (
-            <Button
-              size="small"
-              type="text"
-              onClick={() => {
-                productsStore.resetFilterData();
-                productsStore.resetSelectedFilter();
-              }}
-              icon={<IoMdClose />}
-            >
-              close All
-            </Button>
-          )}
-        </Space>
+        <FilterButtons className="hidden md:block" />
       </BreadcrumbContainer>
       <Container className="py-6">
         <div className="grid flex-col-reverse grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 lg:gap-6 ">
@@ -89,8 +51,9 @@ const ProductsClean = observer(() => {
         </div>
 
         <div className="relative grid grid-cols-1 gap-4 md:gap-5 lg:gap-6 md:grid-cols-3 lg:grid-cols-4">
-          <div className="!sticky !top-0">
+          <div className="md:!sticky !top-0">
             <FilterPanel />
+            <FilterButtons className="md:hidden" />
           </div>
 
           <div
@@ -109,3 +72,41 @@ const ProductsClean = observer(() => {
 });
 
 export default ProductsClean;
+
+function FilterButtons({ className }: { className: string }) {
+  return (
+    <Space className={className}>
+      {productsStore.selectedFilters.map(
+        (item) =>
+          item.value && (
+            <Button
+              key={item.key}
+              onClick={() => {
+                productsStore.setFilerData(item.key, null);
+                productsStore.deleteSelectedFilter(item.key);
+              }}
+              size="small"
+              type="text"
+              icon={<IoMdClose />}
+              className=""
+            >
+              {item.value}
+            </Button>
+          )
+      )}
+      {productsStore.selectedFilters.length > 1 && (
+        <Button
+          size="small"
+          type="text"
+          onClick={() => {
+            productsStore.resetFilterData();
+            productsStore.resetSelectedFilter();
+          }}
+          icon={<IoMdClose />}
+        >
+          close All
+        </Button>
+      )}
+    </Space>
+  );
+}

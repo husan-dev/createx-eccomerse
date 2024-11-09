@@ -61,13 +61,13 @@ class ProductsStore {
     this.selectedFilters = newSelectedFilters;
   }
 
-  searchMaterailInput: string = "";
-  setSearchMaterialInput(value: string) {
-    this.searchMaterailInput = value;
-  }
+  searchMaterialInput: string = "";
 
+  setSearchMaterialInput(value: string) {
+    this.searchMaterialInput = value;
+  }
   //other data
-  materials = [
+  materials: { value: string; title: string }[] = [
     { value: "cotton", title: "Cotton" },
     { value: "cashmere", title: "Cashmere" },
     { value: "denim", title: "Denim" },
@@ -89,6 +89,12 @@ class ProductsStore {
     { value: "suede", title: "Suede" },
     { value: "jersey", title: "Jersey" },
   ];
+
+  get searchMaterialData() {
+    return this.materials.filter((item) =>
+      item.title.toLowerCase().includes(this.searchMaterialInput.toLowerCase())
+    );
+  }
 
   sizes = [
     { title: "XS", value: "xs" },
@@ -121,6 +127,12 @@ class ProductsStore {
     { title: "Silver", value: "silver", color: "#D3D3D3" }, // iliq kumushrang
     { title: "Gold", value: "gold", color: "#FFD966" }, // iliq oltin
   ];
+
+  searchBrandInput: string = "";
+
+  setSearchBrandInput(value: string) {
+    this.searchBrandInput = value;
+  }
   brands = [
     { title: "Adidas", value: "adidas" },
     { title: "Puma", value: "puma" },
@@ -153,6 +165,13 @@ class ProductsStore {
     { title: "Diesel", value: "diesel" },
     { title: "Mango", value: "mango" },
   ];
+
+  get searchBrandData() {
+    return this.brands.filter((item) =>
+      item.title.toLowerCase().includes(this.searchBrandInput.toLowerCase())
+    );
+  }
+
   filterBrands = [];
   constructor() {
     makeAutoObservable(this);

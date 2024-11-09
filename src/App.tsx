@@ -36,6 +36,7 @@ import ProductsClean from "@layouts/products-clean";
 import ContactUs from "@pages/contacts/contact-us";
 import OutletStores from "@pages/contacts/outlet-stores";
 import Faq from "@pages/contacts/faq";
+import { useTranslation } from "react-i18next";
 
 const querycClient = new QueryClient();
 function App() {
@@ -50,7 +51,7 @@ function App() {
           }}
         >
           <Suspense fallback={<Loading />}>
-            <RouterProvider router={routes} />
+            <RouterProvider router={Routes()} />
           </Suspense>
 
           <ReactQueryDevtools initialIsOpen />
@@ -70,55 +71,59 @@ function LangWrapper() {
   return <Outlet />;
 }
 
-const routes = createBrowserRouter([
-  {
-    path: `/:lang`,
-    element: <LangWrapper />,
-    children: [
-      {
-        element: <Layout />,
-        children: [
-          { path: "", index: true, element: <Landing /> },
-          {
-            path: "contacts",
-            element: <Contact />,
-            children: [
-              { path: "", element: <Navigate to={"contact-us"} /> },
-              { path: "contact-us", element: <ContactUs /> },
-              { path: "outlet-stores", element: <OutletStores /> },
-              { path: "faq", element: <Faq /> },
-            ],
-          },
-          { path: "blog", element: <Blog /> },
-          {
-            path: "product",
-            element: <Product />,
-            children: [
-              { path: "general-info", element: <ProductInfo /> },
-              { path: "detalis", element: <ProductDetalis /> },
-              { path: "reviews", element: <ProductReviews /> },
-            ],
-          },
+function Routes() {
+  const { i18n } = useTranslation();
+  const routes = createBrowserRouter([
+    {
+      path: `/:lang`,
+      element: <LangWrapper />,
+      children: [
+        {
+          element: <Layout />,
+          children: [
+            { path: "", index: true, element: <Landing /> },
+            {
+              path: "contacts",
+              element: <Contact />,
+              children: [
+                { path: "", element: <Navigate to={"contact-us"} /> },
+                { path: "contact-us", element: <ContactUs /> },
+                { path: "outlet-stores", element: <OutletStores /> },
+                { path: "faq", element: <Faq /> },
+              ],
+            },
+            { path: "blog", element: <Blog /> },
+            {
+              path: "product",
+              element: <Product />,
+              children: [
+                { path: "general-info", element: <ProductInfo /> },
+                { path: "detalis", element: <ProductDetalis /> },
+                { path: "reviews", element: <ProductReviews /> },
+              ],
+            },
 
-          { path: "track", element: <Track /> },
-          { path: "checkout", element: <Checkout /> },
-          { path: "products", element: <ProductsClean /> },
-          { path: "sign-up", element: <SignUp /> },
-          { path: "sign-in", element: <SignIn /> },
-        ],
-      },
-      {
-        path: "my-profile",
-        element: <MyProfile />,
-        children: [
-          { path: "", element: <Profile /> },
-          { path: "orders", element: <MyOrders /> },
-          { path: "wishlist", element: <Wishlist /> },
-          { path: "recently-viewed", element: <RecentlyViewed /> },
-          { path: "reviews", element: <MyReviews /> },
-        ],
-      },
-    ],
-  },
-  { path: "*", element: <NotFound /> },
-]);
+            { path: "track", element: <Track /> },
+            { path: "checkout", element: <Checkout /> },
+            { path: "products", element: <ProductsClean /> },
+            { path: "sign-up", element: <SignUp /> },
+            { path: "sign-in", element: <SignIn /> },
+          ],
+        },
+        {
+          path: "my-profile",
+          element: <MyProfile />,
+          children: [
+            { path: "", element: <Profile /> },
+            { path: "orders", element: <MyOrders /> },
+            { path: "wishlist", element: <Wishlist /> },
+            { path: "recently-viewed", element: <RecentlyViewed /> },
+            { path: "reviews", element: <MyReviews /> },
+          ],
+        },
+      ],
+    },
+    { path: "", element: <Navigate to={`/${i18n.language}`} /> },
+  ]);
+  return routes;
+}
