@@ -165,5 +165,70 @@
         "signInLink": "Sign in"
       }
     }
+  },
+  "checkout": {
+    "2": {
+      "title": "Shipping && Billing Adress",
+      "form": {
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "Enter your first name"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Enter your last name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "Enter your phone number"
+        },
+        "country": {
+          "label": "Country",
+          "placeholder": "Select your country"
+        },
+        "city": {
+          "label": "City",
+          "placeholder": "Select your city"
+        },
+        "address": {
+          "label": "Address",
+          "placeholder": "Enter your address"
+        },
+        "zipCode": {
+          "label": "ZIP code",
+          "placeholder": "Enter your ZIP code"
+        },
+        "checkbox": "Billing and Shopping details are the same"
+      }
+    },
+    "3": {
+      "title": "Shipping Method",
+      "radioGroup": {
+        "courierToYourAddress": {
+          "label": "Courier to your address",
+          "placeholder": "Estimated date: {{date}}"
+        },
+        "pickUpFromStore": {
+          "label": "Pick up from store",
+          "placeholder": "Pick up on {{fullDate}}"
+        },
+        "upsGroundShipping": {
+          "label": "UPS Ground Shipping",
+          "placeholder": "Up to one week"
+        },
+        "pickUpAtCreatexLocker": {
+          "label": "Pick up at Createx Locker",
+          "placeholder": "Pick up on {{fullDate}}"
+        },
+        "createxGlobalExport": {
+          "label": "Createx Global Export",
+          "placeholder": "3-4 days"
+        }
+      }
+    }
   }
 }

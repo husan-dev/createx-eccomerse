@@ -17,8 +17,8 @@ function Breadcrumb() {
         return (
           <div key={index}>
             {index !== 0 && (
-              <Paragraph className="!m-0 text-black !inline-block">
-                <FaAngleRight />
+              <Paragraph className="!m-0 inline-block text-black">
+                <FaAngleRight className="mt-1" />
               </Paragraph>
             )}
             <Paragraph

@@ -12,7 +12,7 @@ const ProductsClean = observer(() => {
   return (
     <>
       <BreadcrumbContainer className="flex justify-between">
-        <FilterButtons className="hidden md:block" />
+        <ObserverFilterButton className="hidden md:flex" />
       </BreadcrumbContainer>
       <Container className="py-6">
         <div className="grid flex-col-reverse grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 lg:gap-6 ">
@@ -53,7 +53,7 @@ const ProductsClean = observer(() => {
         <div className="relative grid grid-cols-1 gap-4 md:gap-5 lg:gap-6 md:grid-cols-3 lg:grid-cols-4">
           <div className="md:!sticky !top-0">
             <FilterPanel />
-            <FilterButtons className="md:hidden" />
+            <ObserverFilterButton className="md:hidden" />
           </div>
 
           <div
@@ -110,3 +110,5 @@ function FilterButtons({ className }: { className: string }) {
     </Space>
   );
 }
+
+const ObserverFilterButton = observer(FilterButtons);

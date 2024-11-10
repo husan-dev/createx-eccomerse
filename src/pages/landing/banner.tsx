@@ -27,8 +27,8 @@ function Banner() {
             },
             modules: [Pagination, Navigation],
             navigation: {
-              prevEl: ".swiper-button-prev",
-              nextEl: ".swiper-button-next",
+              prevEl: "swiper-button-prev",
+              nextEl: "swiper-button-next",
             },
           },
           1024: {

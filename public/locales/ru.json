@@ -165,6 +165,71 @@
       }
     }
   },
+  "checkout": {
+    "2": {
+      "title": "Адрес доставки и выставления счета",
+      "form": {
+        "firstName": {
+          "label": "Имя",
+          "placeholder": "Введите ваше имя"
+        },
+        "lastName": {
+          "label": "фамилия",
+          "placeholder": "Введите вашу фамилию"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Введите ваш email"
+        },
+        "phone": {
+          "label": "Телефона",
+          "placeholder": "Введите ваш номер телефона"
+        },
+        "country": {
+          "label": "Страну",
+          "placeholder": "Выберите страну"
+        },
+        "city": {
+          "label": "Город",
+          "placeholder": "Выберите город"
+        },
+        "address": {
+          "label": "Адрес",
+          "placeholder": "Введите ваш адрес"
+        },
+        "zipCode": {
+          "label": "Почтовый индекс",
+          "placeholder": "Введите почтовый индекс"
+        },
+        "checkbox": "реквизиты для выставления счета и доставки совпадают"
+      }
+    },
+    "3": {
+      "title": "Способ доставки",
+      "radioGroup": {
+        "courierToYourAddress": {
+          "label": "Курьерская доставка",
+          "placeholder": "Ожидаемая дата: {{date}}"
+        },
+        "pickUpFromStore": {
+          "label": "Самовывоз из магазина",
+          "placeholder": "забрать {{fullDate}}"
+        },
+        "upsGroundShipping": {
+          "label": "Наземная доставка UPS",
+          "placeholder": "До одной недели"
+        },
+        "pickUpAtCreatexLocker": {
+          "label": "Самовывоз из Createx Locker",
+          "placeholder": "забрать {{fullDate}}"
+        },
+        "createxGlobalExport": {
+          "label": "Createx Global Export",
+          "placeholder": "3-4 дня"
+        }
+      }
+    }
+  },
 
   "profile": {},
   "products": {},

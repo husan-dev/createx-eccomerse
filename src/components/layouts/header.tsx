@@ -79,7 +79,7 @@ function Header({ className }: { className?: string }) {
                   onClick={() => navigate("my-profile/wishlist")}
                   className="cursor-pointer"
                 >
-                  <FaRegHeart />0
+                  <FaRegHeart className="mt-1" />0
                 </Space>
                 <Divider type="vertical" className="bg-black opacity-50" />
                 <Space
@@ -88,8 +88,8 @@ function Header({ className }: { className?: string }) {
                     setSearchParams({ cart: "true" });
                   }}
                 >
-                  <PiShoppingCartLight />
-                  <Tag className="bg-green-400 border-none">0</Tag>
+                  <PiShoppingCartLight className="mt-1" />
+                  <Tag className="text-white bg-green-400 border-none">0</Tag>
                 </Space>
               </Space>
             </div>

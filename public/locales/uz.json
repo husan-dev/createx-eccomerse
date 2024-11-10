@@ -164,5 +164,70 @@
         "signInLink": "Kirish"
       }
     }
+  },
+  "checkout": {
+    "2": {
+      "title": "Yetkazib berish && Hisob-kitob manzili",
+      "form": {
+        "firstName": {
+          "label": "Ism",
+          "placeholder": "Ismingizni kiriting"
+        },
+        "lastName": {
+          "label": "Familya",
+          "placeholder": "Familyangizni kiriting"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Pochta manzilingizni kiriting"
+        },
+        "phone": {
+          "label": "Telefon",
+          "placeholder": "Telefon raqamingizni kiriting"
+        },
+        "country": {
+          "label": "Davlat",
+          "placeholder": "Davlatni tanlash"
+        },
+        "city": {
+          "label": "Shahar",
+          "placeholder": "Shaharni tanlang"
+        },
+        "address": {
+          "label": "Manzil",
+          "placeholder": "Manzilingizni kiriting"
+        },
+        "zipCode": {
+          "label": "Pochta indeksi",
+          "placeholder": "Pochta indeksini kiriting"
+        },
+        "checkbox": "To'lov va etkazib berish tafsilotlari bir xil"
+      }
+    },
+    "3": {
+      "title": "Yuk tashish usuli",
+      "radioGroup": {
+        "courierToYourAddress": {
+          "label": "Kurer orqali manzilingizga yetkazib berish",
+          "placeholder": "Taxminiy Sana : {{date}}"
+        },
+        "pickUpFromStore": {
+          "label": "Do'kondan olib ketish",
+          "placeholder": "{{full date}} dan boshlab oling"
+        },
+        "upsGroundShipping": {
+          "label": "UPS yer transporti",
+          "placeholder": "Bir haftagacha yetkazib berish"
+        },
+        "pickUpAtCreatexLocker": {
+          "label": "Createx Locker orqali olib ketish",
+          "placeholder": "{{full date}} dan boshlab oling"
+        },
+        "createxGlobalExport": {
+          "label": "Createx Global Export",
+          "placeholder": "3-4 kun ichida yetkazib berish"
+        }
+      }
+    }
   }
 }

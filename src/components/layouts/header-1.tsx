@@ -19,11 +19,11 @@ function Header1() {
   const location = useLocation();
   const departments = useMemo(
     () => [
-      { title: t("track"), slug: "track" },
-      { title: t("blog"), slug: "blog" },
-      { title: t("contacts"), slug: "contacts" },
+      { title: t("track"), slug: `/${i18n.language}/track` },
+      { title: t("blog"), slug: `/${i18n.language}/blog` },
+      { title: t("contacts"), slug: `/${i18n.language}/contacts` },
     ],
-    [t]
+    [t, i18n]
   );
   const pathname = location.pathname.split("/");
   const navigateChangeLang = useCallback(
