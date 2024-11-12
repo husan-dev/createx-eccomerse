@@ -1,20 +1,20 @@
 import Container from "@components/container";
 import { Paragraph, Title } from "@components/typography";
-import { Divider, Form, Input, message } from "antd";
+import { Divider, Form, Input, Radio } from "antd";
 import { useTranslation } from "react-i18next";
 
 function Checkout() {
   const { t } = useTranslation("", { keyPrefix: "checkout" });
   return (
-    <Container className="flex gap-32">
+    <Container className="flex gap-32 py-[50px]">
       <div>
         <div className="flex justify-between">
           <Title>Checkout</Title>
           <Paragraph className="!mb-0">Back to shopping</Paragraph>
         </div>
         <Divider />
-        <Title>1. Item Review</Title>
-        <Title>2. {t("2.title")}</Title>
+        <Title className="!text-[20px]">1. Item Review</Title>
+        <Title className="!text-[20px]">2. {t("2.title")}</Title>
         <Form
           layout="vertical"
           className="grid grid-cols-1 md:grid-cols-2 gap-x-5"
@@ -74,6 +74,9 @@ function Checkout() {
               placeholder={t("2.form.zipCode.placeholder")}
               className="rounded-sm"
             />
+          </Form.Item>
+          <Form.Item name="">
+            <Radio>{t("2.form.checkbox")}</Radio>
           </Form.Item>
         </Form>
       </div>

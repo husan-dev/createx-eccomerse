@@ -21,7 +21,6 @@ function Banner() {
           },
           768: {
             slidesPerView: 1,
-            spaceBetween: 20,
             pagination: {
               clickable: true,
             },
@@ -33,7 +32,6 @@ function Banner() {
           },
           1024: {
             slidesPerView: 1,
-            spaceBetween: 30,
           },
         }}
         className="px-5 md:px-0 my-5 md:my-0 aspect-[3/2] md:aspect-[6/5] lg:aspect-[7/2.9]"

@@ -1,23 +1,20 @@
 import { Space } from "antd";
-import Container from "../../components/container";
-import { FaRegUser } from "react-icons/fa";
-import { Paragraph, Title } from "../../components/typography";
-import { IoBagOutline } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
-import { IoEyeOutline } from "react-icons/io5";
+import Container from "@components/container";
+import { Paragraph, Title } from "@components/typography";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { IoEyeOutline, IoBagOutline } from "react-icons/io5";
 import { BsDoorClosed } from "react-icons/bs";
 import { FaRegStar } from "react-icons/fa6";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-import Header from "../../components/layouts/header";
-import Footer from "../../components/layouts/footer";
-import MobileMenuBar from "../../components/layouts/mobile-menu-bar";
+import Header from "@components/layouts/header";
+import Footer from "@components/layouts/footer";
+import MobileMenuBar from "@components/layouts/mobile-menu-bar";
 
 function MyProfile() {
   const location = useLocation();
   const navigate = useNavigate();
   const { lang } = useParams();
   const paths = location.pathname.split("/").slice(1);
-  console.log(paths, location.pathname, import.meta.env.BASE_URL);
   return (
     <>
       <Header className="hidden md:block" />
