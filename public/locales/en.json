@@ -229,6 +229,13 @@
           "placeholder": "3-4 days"
         }
       }
+    },
+    "5": {
+      "title": "Additional Information (Optional)",
+      "textarea": {
+        "label": "Order notes",
+        "placeholder": "Notes about your order, e.g. special noted for delivery."
+      }
     }
   }
 }

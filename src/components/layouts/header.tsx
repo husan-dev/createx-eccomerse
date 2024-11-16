@@ -68,7 +68,10 @@ function Header({ className }: { className?: string }) {
                   suffix={<IoSearch />}
                 />
                 {searchDiv && (
-                  <div className="absolute hidden w-full p-2 bg-white border rounded-sm shadow-lg md:block top-14 ">
+                  <div
+                    onClick={() => setSearchDiv(true)}
+                    className="absolute hidden w-full p-2 bg-white border rounded-sm shadow-lg md:block top-14 "
+                  >
                     <Empty />
                   </div>
                 )}

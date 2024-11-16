@@ -1,4 +1,5 @@
 import { ConfigProvider as AntProvider } from "antd";
+import { Suspense } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -24,19 +25,19 @@ import Profile from "@pages/my-profile/profile";
 import Product from "@layouts/product";
 import ProductInfo from "@pages/product/general-info";
 import ProductDetalis from "@pages/product/product-detalis";
-import "./i18n";
 import ProductReviews from "@pages/product/reviews";
 import NotFound from "@pages/404";
 import { supportedLngs } from "./constants";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Suspense } from "react";
 import Loading from "@components/loading";
 import ProductsClean from "@layouts/products-clean";
 import ContactUs from "@pages/contacts/contact-us";
 import OutletStores from "@pages/contacts/outlet-stores";
 import Faq from "@pages/contacts/faq";
 import { useTranslation } from "react-i18next";
+import ErrorBoundary from "@pages/error-boundary";
+import "./i18n";
 
 const querycClient = new QueryClient();
 function App() {
@@ -77,6 +78,7 @@ function Routes() {
     {
       path: `/:lang`,
       element: <LangWrapper />,
+      errorElement: <ErrorBoundary />,
       children: [
         {
           element: <Layout />,
@@ -125,6 +127,7 @@ function Routes() {
       ],
     },
     { path: "", element: <Navigate to={`/${i18n.language}`} /> },
+    { path: "*", element: <NotFound /> },
   ]);
   return routes;
 }

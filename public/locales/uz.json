@@ -4,7 +4,7 @@
       "section1": {
         "track": "Trek",
         "blog": "Blog",
-        "contacts": "Kontaktlar",
+        "contacts": "Aloqa",
         "login-register": "Kirish/ Ro'yxatdan o'tish",
         "phone": "{{workDays}} {{number}} raqamida mavjud"
       },
@@ -115,44 +115,7 @@
       }
     },
     "outlet-stores": { "title": "Savdo do'konlari" },
-    "faq": {
-      "faq1": {
-        "title": "Buyurtma berish uchun ro‘yxatdan o‘tishim kerakmi?",
-        "answer": "Yo‘q, mehmon sifatida buyurtma berishingiz mumkin, lekin ro‘yxatdan o‘tish orqali buyurtmalarni kuzatish va tezroq xarid qilish imkoniyatiga ega bo‘lasiz."
-      },
-      "faq2": {
-        "title": "Taxminiy yetkazib berish vaqti qancha?",
-        "answer": "Oddiy yetkazib berish 3-7 ish kuni davom etadi, ekspress yetkazib berish esa odatda joylashuvingizga qarab 1-3 kun davomida amalga oshiriladi."
-      },
-      "faq3": {
-        "title": "Buyurtmamni qanday to‘lashim mumkin?",
-        "answer": "Biz kredit/debet kartalari, PayPal va boshqa raqamli to‘lov usullarini qabul qilamiz."
-      },
-      "faq4": {
-        "title": "Agar buyurtma qilganimdan keyin narx o‘zgargan bo‘lsa, pulni qaytarib olishim mumkinmi?",
-        "answer": "Afsuski, xariddan keyingi narx o‘zgarishi uchun pul qaytarilmaydi. Ammo bizda tez-tez yangi aksiyalar bo‘lib turadi."
-      },
-      "faq5": {
-        "title": "Agar buyurtmani qaytarsam, yetkazib berish narxi qaytariladimi?",
-        "answer": "Agar qaytarish bizning xatoyimiz tufayli bo‘lsa, yetkazib berish narxi qaytariladi. Aks holda, u qaytarilmaydi."
-      },
-      "faq6": {
-        "title": "Buyurtma bilan qanday hujjatlar beriladi?",
-        "answer": "Buyurtma bilan hisob-faktura va qaytarish hujjati beriladi. Ushbu hujjatlarni kelajakdagi qaytarishlar uchun saqlab qo‘ying."
-      },
-      "faq7": {
-        "title": "Agar buyurtma menga mos kelmasa, uni kuryerga qaytarishim mumkinmi?",
-        "answer": "Biz buyurtmani to‘g‘ridan-to‘g‘ri kuryerga qaytarishni tavsiya etmaymiz. Qaytarish jarayonini osonlashtirish uchun bizning ko‘rsatmalarga rioya qiling."
-      },
-      "faq8": {
-        "title": "Agar buyurtmam yetib kelmagan bo‘lsa, nima qilishim kerak?",
-        "answer": "Buyurtma tafsilotlari bilan bizning mijozlarga xizmat ko‘rsatish bo‘limimizga murojaat qiling, va biz paketni kuzatishda yordam beramiz."
-      },
-      "faq9": {
-        "title": "Qaytarish siyosatingiz qanday?",
-        "answer": "Mahsulotni qabul qilgan kundan boshlab 30 kun ichida qaytarishingiz mumkin, agar mahsulot ishlatilmagan va original qadoqda bo‘lsa. Batafsil ma'lumot uchun veb-saytimizga qarang."
-      }
-    }
+    "faq": { "title": "FAQ" }
   },
   "auth": {
     "orSign": "Or sign in with",
@@ -264,6 +227,13 @@
           "label": "Createx Global Export",
           "placeholder": "3-4 kun ichida yetkazib berish"
         }
+      }
+    },
+    "5": {
+      "title": "Qo'shimcha ma'lumot (ixtiyoriy)",
+      "textarea": {
+        "label": "Buyurtma eslatmalari",
+        "placeholder": "Buyurtmangiz haqida eslatmalar, masalan. yetkazib berish uchun alohida qayd etilgan."
       }
     }
   }
