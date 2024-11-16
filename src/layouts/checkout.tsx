@@ -11,13 +11,15 @@ function Checkout() {
   return (
     <>
       <BreadcrumbContainer />
-      <Container className="grid grid-cols-1 md:grid-cols-12 gap-32 py-[50px]  checkout-page">
-        <div className=" md:col-span-7">
+      <Container className="flex  flex-col md:gap-5 lg:flex-row justify-between py-[50px] px-5 ">
+        <div className="lg:w-[60%] w-[100%]">
           <div className="flex justify-between">
             <Title>Checkout</Title>
             <Paragraph className="!mb-0">Back to shopping</Paragraph>
           </div>
           <Divider />
+
+          {/* 1 */}
           <Title className="!text-[20px]">1. Item Review</Title>
 
           {/* 2 */}
@@ -32,7 +34,7 @@ function Checkout() {
           {/* 5 */}
           <AdditionalInformation />
         </div>
-        <Info className="md:col-span-5" />
+        <Info className="w-[100%] sticky  lg:max-w-[350px]" />
       </Container>
     </>
   );

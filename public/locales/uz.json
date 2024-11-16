@@ -20,6 +20,17 @@
       "mens": "Erkaklar",
       "kids": "Bolalar"
     },
+    "popularCategories": {
+      "title": "Mashhur toifalar",
+      "categories": {
+        "tops": "Ustki kiyimlar",
+        "tShirts": "Futbolkalar",
+        "caps": "Kepkalar",
+        "sandals": "Sandallar",
+        "jackets": "Kurtkalar",
+        "coats": "Palto"
+      }
+    },
     "downloadApp": {
       "title": "Createx Store ilovamiz yordamida mobil xariddan rohatlaning!"
     },

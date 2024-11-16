@@ -1,3 +1,4 @@
+import PopularCategroies from "@pages/landing/popular-categroies";
 import Subscribe from "../components/layouts/subscribe";
 import Adventages from "../pages/landing/adventages";
 import Banner from "../pages/landing/banner";
@@ -12,6 +13,7 @@ function Landing() {
     <>
       <Banner />
       <TopCategories />
+      <PopularCategroies />
       <DownloadApp />
       <Adventages />
       <FollowInstagram />

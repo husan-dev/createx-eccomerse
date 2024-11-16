@@ -20,6 +20,18 @@
       "mens": "Мужской",
       "kids": "Детский"
     },
+    "popularCategories": {
+      "title": "Популярные категории",
+      "categories": {
+        "tops": "Верхняя одежда",
+        "tShirts": "Футболки",
+        "caps": "Кепки",
+        "sandals": "Сандалии",
+        "jackets": "Куртки",
+        "coats": "Пальто"
+      }
+    },
+
     "downloadApp": {
       "title": "Наслаждайтесь мобильным шопингом с нашим приложением Createx Store!"
     },

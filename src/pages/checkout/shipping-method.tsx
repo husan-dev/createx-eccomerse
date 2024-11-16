@@ -36,7 +36,7 @@ function ShippingMethod() {
     [i18n.language]
   );
   return (
-    <div>
+    <div className="mb-[40px] md:mb-5">
       <Title className="!text-[20px]">3. {t("title")}</Title>
       <Radio.Group>
         {radioItems.map((item) => (

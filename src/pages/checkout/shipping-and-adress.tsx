@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 function ShippingAdress() {
   const { t } = useTranslation("", { keyPrefix: "checkout" });
   return (
-    <div>
+    <div className="mb-[40px] md:mb-3">
       <Title className="!text-[20px]">2. {t("2.title")}</Title>
       <Form
         layout="vertical"

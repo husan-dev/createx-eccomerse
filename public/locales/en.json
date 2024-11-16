@@ -20,6 +20,18 @@
       "mens": "Men's",
       "kids": "Kids'"
     },
+    "popularCategories": {
+      "title": "Popular Categories",
+      "categories": {
+        "tops": "Tops",
+        "tShirts": "T-shirts",
+        "caps": "Caps",
+        "sandals": "Sandals",
+        "jackets": "Jacekts",
+        "coats": "Coats"
+      }
+    },
+
     "downloadApp": {
       "title": "Enjoy mobile shopping with our Createx Store App!"
     },

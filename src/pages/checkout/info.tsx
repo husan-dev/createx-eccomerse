@@ -8,7 +8,7 @@ function Info({ className }: { className?: string }) {
   const { t } = useTranslation("", { keyPrefix: "checkout.info" });
 
   return (
-    <div className={`flex flex-col gap-5 max-w-[400px] ${className}`}>
+    <div className={`flex flex-col gap-5   ${className}`}>
       <Form.Item layout="vertical" label={t("code.label")} className="!m-0">
         <Space.Compact className="!rounded-sm h-[45px]">
           <Input

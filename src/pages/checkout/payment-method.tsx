@@ -8,16 +8,19 @@ import masterCardL from "@images/payment-types/master-card.svg";
 import PayPalL from "@images/payment-types/pay-pal.svg";
 
 const inputClassName = "!rounded-sm";
-const logoClassName = "w-[40px]";
+const logoClassName = "w-[50px]";
 
 function PaymentMethod() {
   const { t } = useTranslation("", { keyPrefix: "checkout.4" });
   const [value, setValue] = useState("credit-card");
 
   return (
-    <div className="mb-5">
+    <div className="mb-[40px]">
       <Title className="!text-[20px]">4. {t("title")}</Title>
-      <Radio.Group value={value} className="flex flex-col gap-3 max-w-[400px]">
+      <Radio.Group
+        value={value}
+        className="flex flex-col gap-3 w-[100%] lg:max-w-[400px]"
+      >
         {radioItems.map((item) => (
           <div
             key={item.value}
