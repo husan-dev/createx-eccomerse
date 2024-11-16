@@ -167,6 +167,22 @@
     }
   },
   "checkout": {
+    "info": {
+      "code": {
+        "label": "Apply promo code",
+        "placeholder": "Enter promo code",
+        "button": "Apply"
+      },
+      "card": {
+        "orderTotals": "Order totals",
+        "subtotal": "Subtotal",
+        "shippingCost": "Shipping Cost",
+        "discount:": "Discount:",
+        "estimatedSalesTax": "Estimated sales tax:",
+        "orderTotal": "Order total"
+      },
+      "button": "Complete order"
+    },
     "2": {
       "title": "Shipping && Billing Adress",
       "form": {

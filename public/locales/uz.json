@@ -166,6 +166,22 @@
     }
   },
   "checkout": {
+    "info": {
+      "code": {
+        "label": "Promo kodni qo'llash",
+        "placeholder": "Promo kodni kiriting",
+        "button": "Qo'llash"
+      },
+      "card": {
+        "orderTotals": "Buyurtma natijalari",
+        "subtotal": "Jami",
+        "shippingCost": "Yetkazib berish narxi",
+        "discount:": "Chegirma:",
+        "estimatedSalesTax": "Soliqning taxminiy summasi:",
+        "orderTotal": "Umumiy summa"
+      },
+      "button": "Buyurtmani yakunlash"
+    },
     "2": {
       "title": "Yetkazib berish && Hisob-kitob manzili",
       "form": {
