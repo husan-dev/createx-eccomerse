@@ -94,7 +94,18 @@ function Routes() {
                 { path: "faq", element: <Faq /> },
               ],
             },
-            { path: "blog", element: <Blog /> },
+            {
+              path: "blog",
+              element: <Blog />,
+              children: [
+                { path: "", element: <Navigate to={"blog/all"} /> },
+                {
+                  path: ":blog-category",
+                  element: <Navigate to={"blog"} />,
+                  children: [{ path: ":blog", element: "" }],
+                },
+              ],
+            },
             {
               path: "product",
               element: <Product />,

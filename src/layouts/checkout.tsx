@@ -11,7 +11,7 @@ function Checkout() {
   return (
     <>
       <BreadcrumbContainer />
-      <Container className="flex  flex-col md:gap-5 lg:flex-row justify-between py-[50px] px-5 ">
+      <Container className="flex flex-col md:gap-5 lg:flex-row justify-between py-[50px] px-5 ">
         <div className="lg:w-[60%] w-[100%]">
           <div className="flex justify-between">
             <Title>Checkout</Title>

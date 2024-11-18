@@ -20,8 +20,8 @@ function Header1() {
   const departments = useMemo(
     () => [
       { title: t("track"), slug: `/${i18n.language}/track` },
-      { title: t("blog"), slug: `/${i18n.language}/blog` },
-      { title: t("contacts"), slug: `/${i18n.language}/contacts` },
+      { title: t("blog"), slug: `/${i18n.language}/blog/all` },
+      { title: t("contacts"), slug: `/${i18n.language}/contacts/contact-us` },
     ],
     [t, i18n]
   );
