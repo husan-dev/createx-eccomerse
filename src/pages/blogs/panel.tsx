@@ -14,18 +14,25 @@ function Panel({ className }: { className?: string }) {
   });
   if (isLoading) {
     return (
-      <div className="flex flex-col gap-5">
-        {Array(4)
-          .fill(null)
-          .map((_, index) => (
-            <div
-              key={index}
-              style={{ width: "100%" }}
-              className="flex flex-col"
-            >
-              <Skeleton.Input block active />
-            </div>
-          ))}
+      <div className="flex flex-col w-[300px]">
+        <Input size="large" className="rounded-sm" suffix={<IoSearch />} />
+        <Divider />
+        <Title className="!text-[20px] !mb-5">Blog Categories</Title>
+        <div className="flex flex-col gap-5 mb-5">
+          {Array(4)
+            .fill(null)
+            .map((_, index) => (
+              <div
+                key={index}
+                style={{ width: "100%" }}
+                className="flex flex-col"
+              >
+                <Skeleton.Input block active />
+              </div>
+            ))}
+        </div>
+        <Divider />
+        <Title className="!text-[20px]">Tags</Title>
       </div>
     );
   }
@@ -38,7 +45,7 @@ function Panel({ className }: { className?: string }) {
       <Title className="!text-[20px] !mb-5">Blog Categories</Title>
       <ul>
         <li className="flex justify-between">
-          <Paragraph className="font-bold hover:cursor-pointer hover:!text-main">
+          <Paragraph className="font-bold hover:cursor-pointer hover:!text-main ">
             All
           </Paragraph>
           <Paragraph>
@@ -57,8 +64,6 @@ function Panel({ className }: { className?: string }) {
           </li>
         ))}
       </ul>
-      <Divider />
-      <Title className="!text-[20px]">Featered Posts</Title>
       <Divider />
       <Title className="!text-[20px]">Tags</Title>
       <div>

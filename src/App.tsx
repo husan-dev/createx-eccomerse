@@ -107,7 +107,7 @@ function Routes() {
               children: [
                 {
                   path: "",
-                  element: <Blogs />,
+                  element: <Navigate to={"all"} />,
                 },
                 {
                   path: ":blog-category",

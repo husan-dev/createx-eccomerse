@@ -1,10 +1,11 @@
-import Container from "@components/container";
+import Subscribe from "@components/layouts/subscribe";
 import MainBlog from "@pages/blog/main";
 function Blog() {
   return (
-    <Container className="py-[50px]">
-      <MainBlog />
-    </Container>
+    <>
+      <MainBlog />;
+      <Subscribe />
+    </>
   );
 }
 

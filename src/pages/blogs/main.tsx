@@ -2,15 +2,17 @@ import { getBlogs } from "@api/blog";
 import { Paragraph, Title } from "@components/typography";
 import { useQuery } from "@tanstack/react-query";
 import { IBlog } from "@typess/blog";
-import { Divider, Pagination, Skeleton, Space } from "antd";
+import { Divider, Skeleton, Space } from "antd";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { FaRegComment } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function MainBlogs() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
-    queryKey: ["blog", i18n.language],
+    queryKey: ["blogs", i18n.language],
     queryFn: () => getBlogs(i18n.language),
   });
   if (isLoading) {
@@ -62,13 +64,18 @@ function MainBlogs() {
               noComment
             </Paragraph>
           </Space>
-          <Title className="!text-[20px] hover:text-main hover:cursor-pointer">
+          <Title
+            onClick={() => {
+              navigate(item.slug);
+              console.log(item.slug);
+            }}
+            className="!text-[20px] hover:text-main hover:cursor-pointer"
+          >
             {item.title}
           </Title>
           <Paragraph className="line-clamp-2">{item.subtitle}</Paragraph>
         </div>
       ))}
-      <Pagination />
     </>
   );
 }

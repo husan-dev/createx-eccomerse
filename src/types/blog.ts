@@ -4,6 +4,7 @@ export interface IBlog extends IBase {
   title: string;
   subtitle: string;
   date: string;
+  slug: string;
   img: { url: string };
   category: {
     title: string;
