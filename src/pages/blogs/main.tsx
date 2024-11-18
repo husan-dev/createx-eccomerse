@@ -1,17 +1,17 @@
-import { getBlog } from "@api/blog";
+import { getBlogs } from "@api/blog";
 import { Paragraph, Title } from "@components/typography";
 import { useQuery } from "@tanstack/react-query";
 import { IBlog } from "@typess/blog";
-import { Divider, Skeleton, Space } from "antd";
+import { Divider, Pagination, Skeleton, Space } from "antd";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { FaRegComment } from "react-icons/fa";
 
-function FashionBlog() {
+function MainBlogs() {
   const { i18n } = useTranslation();
   const { data, isLoading, error } = useQuery({
     queryKey: ["blog", i18n.language],
-    queryFn: () => getBlog(i18n.language),
+    queryFn: () => getBlogs(i18n.language),
   });
   if (isLoading) {
     return (
@@ -49,7 +49,7 @@ function FashionBlog() {
             className="w-full mb-4"
           />
           <Space className="mb-3 !text-gray-500" size={"small"}>
-            <Paragraph className="!m-0 !text-gray-500 ">
+            <Paragraph className="!m-0 !text-gray-500">
               {item.category?.title}
             </Paragraph>
             <Divider className="bg-gray-500 " type="vertical" />
@@ -68,8 +68,9 @@ function FashionBlog() {
           <Paragraph className="line-clamp-2">{item.subtitle}</Paragraph>
         </div>
       ))}
+      <Pagination />
     </>
   );
 }
 
-export default FashionBlog;
+export default MainBlogs;

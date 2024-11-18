@@ -12,5 +12,6 @@ export interface IBlog extends IBase {
 }
 export interface IBlogCategory extends IBase {
   title: string;
-  attributes: { countBlog: number };
+  countBlog: number;
+  tags: string[];
 }

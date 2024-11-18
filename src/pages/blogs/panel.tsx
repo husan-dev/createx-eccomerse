@@ -2,7 +2,7 @@ import { getBlogCategories } from "@api/blog";
 import { Paragraph, Title } from "@components/typography";
 import { useQuery } from "@tanstack/react-query";
 import { IBlogCategory } from "@typess/blog";
-import { Divider, Input, Skeleton } from "antd";
+import { Divider, Input, Skeleton, Tag } from "antd";
 import { useTranslation } from "react-i18next";
 import { IoSearch } from "react-icons/io5";
 
@@ -29,7 +29,6 @@ function Panel({ className }: { className?: string }) {
       </div>
     );
   }
-  console.log(data, "blog-c");
 
   if (error) return <p>Xatolik yuz berdi: error</p>;
   return (
@@ -44,8 +43,7 @@ function Panel({ className }: { className?: string }) {
           </Paragraph>
           <Paragraph>
             {data.data.reduce(
-              (count: number, item: IBlogCategory) =>
-                count + item.attributes.countBlog,
+              (count: number, item: IBlogCategory) => count + item.countBlog,
               0
             )}
           </Paragraph>
@@ -55,7 +53,7 @@ function Panel({ className }: { className?: string }) {
             <Paragraph className="font-bold hover:cursor-pointer hover:!text-main">
               {item.title}
             </Paragraph>
-            <Paragraph>{item.attributes.countBlog}</Paragraph>
+            <Paragraph>{item.countBlog}</Paragraph>
           </li>
         ))}
       </ul>
@@ -63,6 +61,11 @@ function Panel({ className }: { className?: string }) {
       <Title className="!text-[20px]">Featered Posts</Title>
       <Divider />
       <Title className="!text-[20px]">Tags</Title>
+      <div>
+        {data.data.map((item: IBlogCategory) =>
+          item.tags.map((jtem) => <Tag key={jtem}>{jtem}</Tag>)
+        )}
+      </div>
     </div>
   );
 }

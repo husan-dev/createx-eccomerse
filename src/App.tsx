@@ -11,7 +11,6 @@ import { Fragment } from "react/jsx-runtime";
 import Landing from "@layouts/landing";
 import Layout from "@layouts/layout";
 import Contact from "@layouts/contact";
-import Blog from "@layouts/blog";
 import MyProfile from "@layouts/my-profile/desktop-my-profile";
 import Track from "@layouts/track";
 import SignUp from "@pages/authentication/sign-up";
@@ -38,6 +37,9 @@ import Faq from "@pages/contacts/faq";
 import { useTranslation } from "react-i18next";
 import ErrorBoundary from "@pages/error-boundary";
 import "./i18n";
+import Blogs from "@layouts/blogs";
+import Blog from "@layouts/blog";
+import BreadcrumbContainer from "@components/breadcrumb-container";
 
 const querycClient = new QueryClient();
 function App() {
@@ -96,13 +98,31 @@ function Routes() {
             },
             {
               path: "blog",
-              element: <Blog />,
+              element: (
+                <>
+                  <BreadcrumbContainer />
+                  <Outlet />
+                </>
+              ),
               children: [
-                { path: "", element: <Navigate to={"blog/all"} /> },
+                {
+                  path: "",
+                  element: <Blogs />,
+                },
                 {
                   path: ":blog-category",
-                  element: <Navigate to={"blog"} />,
-                  children: [{ path: ":blog", element: "" }],
+                  element: (
+                    <>
+                      <Outlet />
+                    </>
+                  ),
+                  children: [
+                    {
+                      path: "",
+                      element: <Blogs />,
+                    },
+                    { path: ":blog", element: <Blog /> },
+                  ],
                 },
               ],
             },
