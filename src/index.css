@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: "";
+}
 .ant-collapse-item:not(:first-child) {
   border-top: 1px solid #e5e8ed;
 }

@@ -9,6 +9,9 @@ function SignIn() {
   const [form] = useForm();
   const { lang } = useParams();
   const { t } = useTranslation("", { keyPrefix: "auth.signIn" });
+  function handleFinish() {
+    console.log(form.getFieldValue, "sing-in handle-finish()");
+  }
   return (
     <>
       <div className="mx-auto max-w-[500px] py-[50px]">
@@ -17,7 +20,7 @@ function SignIn() {
             {t("title")}
           </Title>
           <Paragraph className="text-center ">{t("description")}</Paragraph>
-          <Form form={form} layout="vertical">
+          <Form onFinish={handleFinish} form={form} layout="vertical">
             <Form.Item name={"email"} label={t("form.email.label")}>
               <Input
                 className="rounded-sm"
@@ -38,6 +41,7 @@ function SignIn() {
               <Link to="/">{t("form.forgotPassword")}</Link>
             </div>
             <Button
+              onClick={form.submit}
               size="large"
               type="primary"
               className="w-full mb-5 rounded-sm"

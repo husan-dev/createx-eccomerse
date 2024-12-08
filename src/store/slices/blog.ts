@@ -4,5 +4,6 @@ class Blog {
     makeAutoObservable(this);
   }
 }
+
 const BlogStore = new Blog();
 export default BlogStore;

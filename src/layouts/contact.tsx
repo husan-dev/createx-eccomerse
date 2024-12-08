@@ -15,13 +15,13 @@ function Contact() {
         <div className="col-span-5 ">
           {pages.map((item) => (
             <Title
-              className={`!text-[30px] !mb-5 !mt-0  cursor-pointer ${
-                location.pathname.includes(item.path) ? "!text-main" : ""
+              className={`!text-[25px] sm:!text-[28px] md:!text-[30px]  sm:!mb-5 !mt-0  cursor-pointer ${
+                location.pathname.includes(item) ? "!text-main" : ""
               }`}
-              onClick={() => navigate(item.path)}
-              key={item.path}
+              onClick={() => navigate(item)}
+              key={item}
             >
-              {t(item.path + ".title")}
+              {t(item + ".title")}
             </Title>
           ))}
         </div>
@@ -35,8 +35,4 @@ function Contact() {
 
 export default Contact;
 
-const pages = [
-  { title: "Contact Us", path: "contact-us" },
-  { title: "Outlet Stores", path: "outlet-stores" },
-  { title: "FAQ", path: "faq" },
-];
+const pages = ["contact-us", "outlet-stores", "faq"];

@@ -13,9 +13,7 @@ export type IType =
   | "colorPicker"
   | "rate"
   | "slider";
-
 export type InputSize = "middle" | "small" | "large";
-
 export interface IFormData {
   type?: IType;
   name: string;

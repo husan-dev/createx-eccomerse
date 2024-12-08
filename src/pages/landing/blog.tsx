@@ -7,16 +7,18 @@ import { Button, Divider, Skeleton, Space } from "antd";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { FaRegComment } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 function Blog() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
     queryKey: ["blog-landing", i18n.language],
     queryFn: () => getBlogL(i18n.language),
   });
   if (isLoading) {
     return (
-      <div className="grid gird-cols-1 md:grid-cols-2">
+      <Container className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {Array(2)
           .fill(null)
           .map((_, index) => (
@@ -33,7 +35,7 @@ function Blog() {
               <Skeleton active />
             </div>
           ))}
-      </div>
+      </Container>
     );
   }
 
@@ -42,7 +44,9 @@ function Blog() {
     <Container>
       <div className="flex items-center justify-between mb-[20px]">
         <Title className="!mb-0">Fashion Blogs</Title>
-        <Button size="large">View More</Button>
+        <Button onClick={() => navigate("blog")} size="large">
+          View More
+        </Button>
       </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {data.map((item: IBlog) => (

@@ -31,6 +31,7 @@ function MainBlog() {
           <Paragraph className="!m-0 !text-gray-500">
             {data[0].category?.title}
           </Paragraph>
+
           <Divider className="bg-gray-500 " type="vertical" />
           <Paragraph className="!m-0 !text-gray-500">
             {dayjs(data[0].date).format("MMMM D, YYYY")}
@@ -57,10 +58,10 @@ function MainBlog() {
           className="mb-[20px]"
           rehypePlugins={[rehypeRaw, rehypeSanitize]}
           components={{
-            h1: ({ node, ...props }) => (
+            h1: ({ ...props }) => (
               <h1 style={{ color: "blue", fontSize: "2rem" }} {...props} />
             ),
-            h2: ({ node, ...props }) => (
+            h2: ({ ...props }) => (
               <h2
                 style={{
                   color: "darkgreen",
@@ -71,7 +72,7 @@ function MainBlog() {
                 {...props}
               />
             ),
-            ul: ({ node, ...props }) => (
+            ul: ({ ...props }) => (
               <ul
                 style={{ listStyleType: "circle", marginLeft: "20px" }}
                 {...props}

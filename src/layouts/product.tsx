@@ -1,7 +1,7 @@
 import { Button, Divider, Space } from "antd";
-import { Title } from "../components/typography";
+import { Title } from "@components/typography";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Container from "../components/container";
+import Container from "@components/container";
 
 function Product() {
   const navigate = useNavigate();

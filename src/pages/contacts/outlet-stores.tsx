@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getStores } from "@api/contacts";
 import { Skeleton } from "antd";
 import { Title } from "@components/typography";
+import { useMemo } from "react";
 function OutletStores() {
   const { i18n } = useTranslation();
   const { data, isLoading, error } = useQuery({
@@ -19,7 +20,7 @@ function OutletStores() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-5 md:gap-7 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-5 md:gap-7 sm:grid-cols-2">
       {isLoading
         ? Array(4)
             .fill(null)
@@ -37,36 +38,36 @@ function OutletStores() {
 export default OutletStores;
 
 function Card({ item }: { item: IOutletStores }) {
+  const data = useMemo(
+    () => [
+      { key: 1, title: item.phone, icon: <IoPhonePortraitOutline /> },
+      { key: 2, title: item.email, icon: <CiMail /> },
+      { key: 3, title: item.workTime, icon: <CiClock2 /> },
+      { key: 4, title: item.location, icon: <IoLocationOutline /> },
+    ],
+    [item]
+  );
   return (
-    <div className="transition-all border rounded-sm cursor-pointer hover:scale-105 hover:shadow-md">
+    <div className="transition-all border rounded-sm cursor-pointer hover:shadow-md">
       <img
-        style={{ backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
-        className="w-full h-[150px]"
+        className="w-full aspect-[3/1.7]"
         src={`${import.meta.env.VITE_BASE_URL}${item.img.url}`}
-        alt=""
+        alt="store"
       />
 
       <div className="p-3">
         <Title className="!text-[20px]">{item.title}</Title>
         <ul>
-          <li className="flex items-center gap-1 mb-2">
-            {<IoPhonePortraitOutline />}
-            {item.phone}
-          </li>
-          <li className="flex items-center gap-1 mb-2">
-            {<CiMail />}
-            {item.email}
-          </li>
-          <li className="flex items-center gap-1 mb-2">
-            {<CiClock2 />}
-            {item.workTime}
-          </li>
-          <li className="flex items-center gap-1 mb-2">
-            {<IoLocationOutline />}
-            {item.location}
-          </li>
+          {data.map((i) => (
+            <li
+              key={i.key}
+              className="flex items-center text-[14px] gap-1 mb-2"
+            >
+              {i.icon}
+              {i.title}
+            </li>
+          ))}
         </ul>
-        {}
       </div>
     </div>
   );

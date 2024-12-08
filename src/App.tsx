@@ -11,7 +11,6 @@ import { Fragment } from "react/jsx-runtime";
 import Landing from "@layouts/landing";
 import Layout from "@layouts/layout";
 import Contact from "@layouts/contact";
-import MyProfile from "@layouts/my-profile/desktop-my-profile";
 import Track from "@layouts/track";
 import SignUp from "@pages/authentication/sign-up";
 import SignIn from "@pages/authentication/sign-in";
@@ -40,6 +39,7 @@ import "./i18n";
 import Blogs from "@layouts/blogs";
 import Blog from "@layouts/blog";
 import BreadcrumbContainer from "@components/breadcrumb-container";
+import MyProfile from "@layouts/my-profile";
 
 const querycClient = new QueryClient();
 function App() {
@@ -136,7 +136,6 @@ function Routes() {
                 { path: "reviews", element: <ProductReviews /> },
               ],
             },
-
             { path: "track", element: <Track /> },
             { path: "checkout", element: <Checkout /> },
             { path: "products", element: <ProductsClean /> },
@@ -158,7 +157,6 @@ function Routes() {
       ],
     },
     { path: "", element: <Navigate to={`/${i18n.language}`} /> },
-    { path: "*", element: <NotFound /> },
   ]);
   return routes;
 }

@@ -19,7 +19,6 @@ function AutoForm({
   form,
   data,
   size,
-  col,
   gap,
   layout,
   inputClassName,
@@ -112,7 +111,7 @@ function AutoForm({
       form={form}
       size={size}
       layout={layout}
-      className={`grid grid-cols-${col}`}
+      className={`grid gird-cols-1 md:grid-cols-2`}
       style={{ gap: ` 0 ${gap}px` }}
     >
       {data?.map((item, index) => (

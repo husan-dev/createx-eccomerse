@@ -14,8 +14,11 @@ export default {
       colors: {
         main: "#17696A",
         secondary: "#1E212C",
-        typography: "",
       },
+    },
+    container: {
+      center: true,
+      padding: "20px",
     },
   },
   plugins: [],

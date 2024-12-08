@@ -1,4 +1,4 @@
-import { Dropdown, Menu, Space } from "antd";
+import { Dropdown, Space } from "antd";
 import Container from "../container";
 import { Paragraph } from "../typography";
 import { TEL_NUMBER, WORKDAYS } from "../../constants";
@@ -57,29 +57,25 @@ function Header1() {
         </Space>
         <Space size={"large"}>
           <Dropdown
-            overlay={
-              <Menu>
-                {translateItems.map((item) => (
-                  <Menu.Item key={item.key}>
-                    <Space
-                      onClick={async () => {
-                        await i18n.changeLanguage(item.key);
-                        navigate(navigateChangeLang(item.key), {
-                          replace: true,
-                        });
-                      }}
-                    >
-                      <img
-                        className="w-[20px]"
-                        src={item.flag}
-                        alt={item.flag}
-                      />
-                      <Paragraph className="!m-0">{item.title}</Paragraph>
-                    </Space>
-                  </Menu.Item>
-                ))}
-              </Menu>
-            }
+            menu={{
+              items: translateItems.map((item) => ({
+                key: item.key,
+                label: (
+                  <Space
+                    className="w-full"
+                    onClick={async () => {
+                      await i18n.changeLanguage(item.key);
+                      navigate(navigateChangeLang(item.key), {
+                        replace: true,
+                      });
+                    }}
+                  >
+                    <img className="w-[20px]" src={item.flag} alt={item.flag} />
+                    <Paragraph className="!m-0">{item.title}</Paragraph>
+                  </Space>
+                ),
+              })),
+            }}
             trigger={["click"]}
           >
             <a onClick={(e) => e.preventDefault()}>

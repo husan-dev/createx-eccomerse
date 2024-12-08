@@ -1,5 +1,5 @@
-import { Select, Space } from "antd";
 import { Title } from "@components/typography";
+import { Select, Space } from "antd";
 
 function MyOrders() {
   return (

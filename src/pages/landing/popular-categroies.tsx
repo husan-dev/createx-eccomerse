@@ -14,12 +14,14 @@ function PopularCategroies() {
   });
   return (
     <Container className="py-[50px]">
-      <Title className="text-center !mb-7">{t("title")}</Title>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-7">
+      <Title className="text-center !text-2xl  md:!text-[30px]  !mb-7">
+        {t("title")}
+      </Title>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-7">
         {items.map((item) => (
           <div key={item.value} className="flex flex-col">
-            <img src={item.img} alt="" />
-            <Title className="!text-[25px] !mt-5 text-center">
+            <img src={item.img} className="w-[80%] mx-auto" alt="" />
+            <Title className="!text-[20px] sm:!text-[25px] whitespace-nowrap !mt-5 text-center">
               {t(`categories.${item.value}`)}
             </Title>
           </div>

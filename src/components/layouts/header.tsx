@@ -34,9 +34,9 @@ function Header({ className }: { className?: string }) {
         <Header1 />
         <div className="relative bg-white ">
           <Container className="flex items-center justify-between py-4 ">
-            <div className="flex gap-[60px]">
+            <div className="flex md:gap-[60px]">
               <img
-                className="cursor-pointer w-[120px]"
+                className="cursor-pointer w-[120px] h-[30px]"
                 onClick={() => {
                   navigate("");
                 }}
@@ -57,7 +57,7 @@ function Header({ className }: { className?: string }) {
                 ))}
               </Space>
             </div>
-            <div className="flex gap-8">
+            <div className="hidden gap-8 md:flex">
               <div className="relative w-[380px] ">
                 <Input
                   size="large"
