@@ -22,6 +22,7 @@ const FilterPanel = observer(() => {
     toJS(productsStore.searchMaterialInput),
     productsStore.searchMaterialData[0]
   );
+  console.log(toJS(productsStore.filterData), "filter data");
   const items: CollapseProps["items"] = useMemo(
     () => [
       {
@@ -65,7 +66,7 @@ const FilterPanel = observer(() => {
           <div className="max-h-[180px] overflow-y-auto pe-5">
             <div className="grid grid-cols-4 gap-5 sm:grid-cols-6 md:grid-cols-3 xl:grid-cols-4">
               {productsStore.colors.map((item) => (
-                <div className="flex flex-col justiy-center">
+                <div key={item.value} className="flex flex-col justiy-center">
                   <div
                     onClick={() => {
                       productsStore.setFilerData("color", item.value);

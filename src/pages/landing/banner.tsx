@@ -11,10 +11,15 @@ import Container from "@components/container";
 import { useRef, useState } from "react";
 import { Title } from "@components/typography";
 import clsx from "clsx";
+import bannerImg1 from "@images/landing/banner/banner1.jpg";
+import bannerImg2 from "@images/landing/banner/banner2.jpg";
+import bannerImg3 from "@images/landing/banner/banner3.jpg";
+import bannerImg4 from "@images/landing/banner/banner4.jpg";
 function Banner() {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
+  const images = [bannerImg1, bannerImg2, bannerImg3, bannerImg4];
   const handleSwiperInit = (swiper: SwiperCore) => {
     setSlideCount(swiper.slides.length);
   };
@@ -64,10 +69,16 @@ function Banner() {
       }}
       className="px-5 border border-solid  md:px-0 my-5 md:my-0 aspect-[3/2] md:aspect-[3/2.075] lg:aspect-[3/1.7] xl:aspect-[7/2.9]"
     >
-      <SwiperSlide className="">Slide 1</SwiperSlide>
-      <SwiperSlide className="">Slide 2</SwiperSlide>
-      <SwiperSlide className="">Slide 3</SwiperSlide>
-      <SwiperSlide className="">Slide 4</SwiperSlide>
+      {images.map((item, index) => (
+        <SwiperSlide key={index} className="">
+          <img
+            className="object-cover object-[20%_20%] w-full h-full "
+            src={item}
+            alt="banner image"
+          />
+        </SwiperSlide>
+      ))}
+
       <Container className="absolute !w-[50%] left-0 bottom-[160px] !z-[5]">
         <div
           className={clsx("hidden md:grid w-full gap-1", {

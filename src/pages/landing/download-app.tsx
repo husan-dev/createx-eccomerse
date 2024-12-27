@@ -23,8 +23,8 @@ function DownloadApp() {
             {t("landingPage.downloadApp.title")}
           </Title>
           <Space>
-            <img src={playMarket} alt="notFound" />
-            <img src={appStore} alt="notFound" />
+            <img className="transition-all cursor-pointer hover:scale-105" src={playMarket} alt="notFound" />
+            <img className="transition-all cursor-pointer hover:scale-105"  src={appStore} alt="notFound" />
           </Space>
         </div>
       </Container>

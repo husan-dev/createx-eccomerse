@@ -6,13 +6,8 @@
         "blog": "Блог",
         "contacts": "Контакты",
         "login-register": "Войти / Зарегистрироваться",
+        "profile": "Профиль",
         "phone": "доступен {{workDays}}  {{number}}"
-      },
-      "section2": {
-        "womens": "Женщины",
-        "mens": "Мужчины",
-        "girls": "Девушки",
-        "boys": "Мальчики"
       }
     },
     "topCategories": {
@@ -124,7 +119,8 @@
           "placeholder": "Напишите ваше сообщение здесь"
         },
         "sendButton": "Отправить сообщение"
-      }
+      },
+      "message": "Сообщение успешно отправлено"
     },
     "outlet-stores": { "title": "Магазины покупок" },
     "faq": { "title": "FAQ" }

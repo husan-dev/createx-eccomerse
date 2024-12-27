@@ -1,14 +1,20 @@
 import { Paragraph, Title } from "@components/typography";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlineMessage } from "react-icons/md";
 import { TEL_NUMBER } from "@src/constants";
 import { useTranslation } from "react-i18next";
+import { useCallback } from "react";
 
 function ContactUs() {
   const { t } = useTranslation("", { keyPrefix: "contact.contact-us" });
+  const [form] = Form.useForm();
+  const handleFinish = useCallback(() => {
+    form.resetFields();
+    message.success(t("message"));
+  }, [form, t]);
   return (
     <div>
       <Title className="!text-[20px] !mb-5">{t("heading")}</Title>
@@ -16,13 +22,15 @@ function ContactUs() {
         {connections.map((item, index) => (
           <li key={index} className="flex items-center gap-2 !text-main mb-2">
             {item.icon}{" "}
-            <Paragraph className="!m-0 text-main">{item.title}</Paragraph>
+            <Paragraph className="!m-0 text-main">{t(item.title)}</Paragraph>
           </li>
         ))}
       </ul>
 
       <Title className="!text-[20px] !mb-5">{t("orText")}</Title>
       <Form
+        onFinish={handleFinish}
+        form={form}
         layout="vertical"
         className="grid grid-cols-1 mt-8 sm:grid-cols-2 gap-x-7"
       >
@@ -67,7 +75,12 @@ function ContactUs() {
           />
         </Form.Item>
       </Form>
-      <Button size="large" type="primary" className="!rounded-sm mt-5">
+      <Button
+        onClick={form.submit}
+        size="large"
+        type="primary"
+        className="!rounded-sm mt-5"
+      >
         {t("form.sendButton")}
       </Button>
     </div>
@@ -78,7 +91,7 @@ export default ContactUs;
 
 const connections = [
   { icon: <IoPhonePortraitOutline />, title: TEL_NUMBER },
-  { icon: <CiMail />, title: "send us as Email" },
-  { icon: <MdOutlineMessage />, title: "Connect on Manager" },
-  { icon: <FaXTwitter />, title: "Tweet us" },
+  { icon: <CiMail />, title: "email" },
+  { icon: <MdOutlineMessage />, title: "manager" },
+  { icon: <FaXTwitter />, title: "twitter" },
 ];

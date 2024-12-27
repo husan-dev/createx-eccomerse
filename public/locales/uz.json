@@ -6,13 +6,8 @@
         "blog": "Blog",
         "contacts": "Aloqa",
         "login-register": "Kirish/ Ro'yxatdan o'tish",
+        "profile": "Profil",
         "phone": "{{workDays}} {{number}} raqamida mavjud"
-      },
-      "section2": {
-        "womens": "ayollar",
-        "mens": "akraklar",
-        "girls": "qizlar",
-        "boys": "bolalar"
       }
     },
     "topCategories": {
@@ -123,7 +118,8 @@
           "placeholder": "Xabaringizni shu yerga yozing"
         },
         "sendButton": "Xabar yuboring"
-      }
+      },
+      "message": "Xabar muvaffaqiyatli yuborildi"
     },
     "outlet-stores": { "title": "Savdo do'konlari" },
     "faq": { "title": "FAQ" }

@@ -1,13 +1,16 @@
-import { Button, Input, Radio, Space } from "antd";
+import { Button, Input, Radio, Space, InputRef, message } from "antd";
 import { Paragraph, Title } from "../typography";
-import image from "../../../public/images/subscribe.svg";
-import Container from "../container";
+import image from "@images/subscribe.svg";
+import Container from "@components/container";
 import { useTranslation } from "react-i18next";
+import { useRef } from "react";
 
 const buttons = ["women", "men", "girls", "boys"];
 
 function Subscribe() {
   const { t } = useTranslation("", { keyPrefix: "landingPage.subscribe" });
+  const email = useRef<InputRef>(null);
+
   return (
     <div className="py-10 bg-gray-200">
       <Container className="grid items-center grid-cols-1 gap-10 md:gap-5 md:grid-cols-2">
@@ -27,11 +30,22 @@ function Subscribe() {
             <Paragraph>Email</Paragraph>
             <Space.Compact className="!rounded-none h-[45px]">
               <Input
+                ref={email}
                 className="w-full !rounded-sm"
                 size="large"
+                type="email"
                 placeholder={t("inputPlaceholder")}
               />
-              <Button className="!rounded-sm h-[45px]" type="primary">
+              <Button
+                onClick={() => {
+                  if (email.current?.input) {
+                    email.current.input.value = "";
+                  }
+                  message.success("Thank you for subscribing");
+                }}
+                className="!rounded-sm h-[45px]"
+                type="primary"
+              >
                 {t("subscribe")}
               </Button>
             </Space.Compact>

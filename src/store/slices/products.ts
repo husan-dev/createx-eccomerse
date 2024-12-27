@@ -1,5 +1,13 @@
 import { filterDataKey, ISelectedFilters, TFilterData } from "@typess/products";
 import { makeAutoObservable } from "mobx";
+interface ISortData {
+  sortBy: "name" | "price";
+  sort: "asc" | "desc" | null;
+}
+interface Pagination {
+  page: number;
+  pageSize: number;
+}
 class ProductsStore {
   //filterData
   filterData: TFilterData = {
@@ -10,6 +18,27 @@ class ProductsStore {
     size: null,
   };
 
+  pagination: Pagination = {
+    page: 1,
+    pageSize: 12,
+  };
+  setPagination<K extends keyof Pagination>(key: K, value: Pagination[K]) {
+    this.pagination[key] = value;
+  }
+
+  sortData: ISortData = {
+    sortBy: "name",
+    sort: "asc" as "asc" | "desc" | null,
+  };
+
+  setSortData(value: string) {
+    const [sortBy, sort] = value.split("-");
+    this.sortData.sortBy = sortBy as "name" | "price";
+    this.sortData.sort = sort as "asc" | "desc";
+  }
+  getSortData() {
+    return `${this.sortData.sortBy}:${this.sortData.sort}`;
+  }
   setFilerData<K extends keyof TFilterData>(key: K, value: TFilterData[K]) {
     this.filterData[key] = value;
   }

@@ -1,17 +1,42 @@
-import { Button, Divider, Form, Input, Radio } from "antd";
+import { Button, Divider, Form, Input, message } from "antd";
 import { Paragraph, Text, Title } from "@components/typography";
 import { useForm } from "antd/es/form/Form";
-import OrSignInWidth from "./or-sign-in-width";
-import { Link, useParams } from "react-router-dom";
+// import OrSignInWidth from "./or-sign-in-width";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
-function SignIn() {
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "@api/auth";
+import { observer } from "mobx-react-lite";
+import userStore from "@store/slices/user";
+const SignIn = observer(() => {
   const [form] = useForm();
   const { lang } = useParams();
   const { t } = useTranslation("", { keyPrefix: "auth.signIn" });
+  const navigate = useNavigate();
+  const loginMutation = useMutation({
+    mutationFn: (credentials: { identifier: string; password: string }) =>
+      signIn(credentials.identifier, credentials.password),
+    onSuccess: (data) => {
+      userStore.updateUser(data.user);
+      localStorage.setItem("token", data.jwt);
+      message.success("Tizimga kirish muvaffaqiyatli amalga oshirildi");
+      navigate(`/${lang}/`);
+    },
+    onError: () => {
+      message.error({
+        content: t("loginError") || "Tizimga kirishda xatolik yuz berdi",
+        duration: 3,
+      });
+    },
+  });
+
   function handleFinish() {
-    console.log(form.getFieldValue, "sing-in handle-finish()");
+    console.log("Form submitted");
+    const { email, password } = form.getFieldsValue();
+    console.log("Calling signIn with:", { identifier: email, password });
+    loginMutation.mutate({ identifier: email, password });
   }
+
   return (
     <>
       <div className="mx-auto max-w-[500px] py-[50px]">
@@ -36,10 +61,10 @@ function SignIn() {
                 size="large"
               />
             </Form.Item>
-            <div className="flex justify-between mb-5">
+            {/* <div className="flex justify-between mb-5">
               <Radio>{t("form.keepSignedIn")}</Radio>
               <Link to="/">{t("form.forgotPassword")}</Link>
-            </div>
+            </div> */}
             <Button
               onClick={form.submit}
               size="large"
@@ -50,15 +75,15 @@ function SignIn() {
             </Button>
           </Form>
           <Text className="!mb-5">
-            {t("form.dontHaveAccount")}{" "}
+            {t("form.dontHaveAccount")}
             <Link to={`/${lang}/sign-up`}> {t("form.signUpLink")}</Link>
           </Text>
         </div>
         <Divider className="!m-0" />
-        <OrSignInWidth />
+        {/* <OrSignInWidth /> */}
       </div>
     </>
   );
-}
+});
 
 export default SignIn;

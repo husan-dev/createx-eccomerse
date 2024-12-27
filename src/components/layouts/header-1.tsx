@@ -19,12 +19,13 @@ function Header1() {
   const location = useLocation();
   const departments = useMemo(
     () => [
-      { title: t("track"), slug: `/${i18n.language}/track` },
+      // { title: t("track"), slug: `/${i18n.language}/track` },
       { title: t("blog"), slug: `/${i18n.language}/blog/all` },
       { title: t("contacts"), slug: `/${i18n.language}/contacts/contact-us` },
     ],
     [t, i18n]
   );
+
   const pathname = location.pathname.split("/");
   const navigateChangeLang = useCallback(
     (lang: string) =>
@@ -61,19 +62,17 @@ function Header1() {
               items: translateItems.map((item) => ({
                 key: item.key,
                 label: (
-                  <Space
-                    className="w-full"
-                    onClick={async () => {
-                      await i18n.changeLanguage(item.key);
-                      navigate(navigateChangeLang(item.key), {
-                        replace: true,
-                      });
-                    }}
-                  >
+                  <Space className="w-full">
                     <img className="w-[20px]" src={item.flag} alt={item.flag} />
                     <Paragraph className="!m-0">{item.title}</Paragraph>
                   </Space>
                 ),
+                onClick: async () => {
+                  await i18n.changeLanguage(item.key);
+                  navigate(navigateChangeLang(item.key), {
+                    replace: true,
+                  });
+                },
               })),
             }}
             trigger={["click"]}
@@ -102,11 +101,20 @@ function Header1() {
           </Dropdown>
           <Paragraph
             onClick={() => {
-              navigate("sign-up");
+              navigate(
+                `/${i18n.language}/${
+                  localStorage.getItem("token")
+                    ? "my-profile"
+                    : "sign-up"
+                }`
+              );
             }}
             className="!mb-0 text-gray-500 cursor-pointer flex gap-2 items-center"
           >
-            <FaRegUser /> {t("login-register")}
+            <FaRegUser />
+            {localStorage.getItem("token")
+              ? t("profile")
+              : t("login-register")}
           </Paragraph>
         </Space>
       </Container>

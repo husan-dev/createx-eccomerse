@@ -6,13 +6,8 @@
         "blog": "Blog",
         "contacts": "Contact",
         "login-register": "Log in / Registor",
+        "profile": "Profile",
         "phone": "Available at {{workDays}} {{number}}"
-      },
-      "section2": {
-        "womens": "Womens",
-        "mens": "Mens",
-        "girls": "Girls",
-        "boys": "Boys"
       }
     },
     "topCategories": {
@@ -31,7 +26,6 @@
         "coats": "Coats"
       }
     },
-
     "downloadApp": {
       "title": "Enjoy mobile shopping with our Createx Store App!"
     },
@@ -125,7 +119,8 @@
           "placeholder": "Write your message here"
         },
         "sendButton": "Send message"
-      }
+      },
+      "message": "Message sent successfully"
     },
     "outlet-stores": { "title": "Outlet Stores" },
     "faq": { "title": "FAQ" }

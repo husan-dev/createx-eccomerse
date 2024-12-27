@@ -15,60 +15,51 @@ function MainBlogs() {
     queryKey: ["blogs", i18n.language],
     queryFn: () => getBlogs(i18n.language),
   });
+
   if (isLoading) {
     return (
       <div className="flex flex-col gap-7">
-        {Array(3)
-          .fill(null)
-          .map((_, index) => (
-            <div
-              key={index}
-              style={{ width: "100%" }}
-              className="flex flex-col"
-            >
-              <Skeleton.Image
-                style={{ width: "100%", height: "300px" }}
-                active
-                className="mb-3"
-              />
-              <Skeleton active />
-            </div>
-          ))}
+        {Array.from({ length: 3 }, (_, index) => (
+          <div key={index} style={{ width: "100%" }} className="flex flex-col">
+            <Skeleton.Image
+              style={{ width: "100%", height: "300px" }}
+              active
+              className="mb-3"
+            />
+            <Skeleton active />
+          </div>
+        ))}
       </div>
     );
   }
 
-  if (error) return <p>Xatolik yuz berdi: error</p>;
-  console.log(data, "blog");
+  if (error) return <p>Xatolik yuz berdi: {(error as Error).message}</p>;
 
   return (
     <>
-      {data.data.map((item: IBlog) => (
+      {data?.data.map((item: IBlog) => (
         <div key={item.id} className="mb-[30px]">
           <img
             src={`${import.meta.env.VITE_BASE_URL}${item.img.url}`}
-            alt="image"
+            alt={item.title}
             className="w-full mb-4"
           />
-          <Space className="mb-3 !text-gray-500" size={"small"}>
+          <Space className="mb-3 !text-gray-500" size="small">
             <Paragraph className="!m-0 !text-gray-500">
-              {item.category?.title}
+              {item.category?.title || "No Category"}
             </Paragraph>
-            <Divider className="bg-gray-500 " type="vertical" />
+            <Divider className="bg-gray-500" type="vertical" />
             <Paragraph className="!m-0 !text-gray-500">
               {dayjs(item.date).format("MMMM D, YYYY")}
             </Paragraph>
-            <Divider className="bg-gray-500 " type="vertical" />
+            <Divider className="bg-gray-500" type="vertical" />
             <Paragraph className="flex !m-0 items-center gap-2 !text-gray-500">
               <FaRegComment />
               noComment
             </Paragraph>
           </Space>
           <Title
-            onClick={() => {
-              navigate(item.slug);
-              console.log(item.slug);
-            }}
+            onClick={() => navigate(item.slug)}
             className="!text-[20px] hover:text-main hover:cursor-pointer"
           >
             {item.title}

@@ -5,10 +5,17 @@ import ProductList from "@pages/products/product-list";
 import productsStore from "@store/slices/products";
 import { Button, Form, InputNumber, Select, Space } from "antd";
 import { observer } from "mobx-react-lite";
+import { useCallback } from "react";
 import { CiFilter } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
-const ProductsClean = observer(() => {
+const ProductsClean: React.FC = observer(() => {
+  const handleSort = useCallback(
+    (value: string) => {
+      productsStore.setSortData(value);
+    },
+    [productsStore.sortData]
+  );
   return (
     <>
       <BreadcrumbContainer className="flex justify-between">
@@ -34,7 +41,8 @@ const ProductsClean = observer(() => {
           >
             <Form.Item label="Sort by" className="">
               <Select
-                defaultValue={"name-asc"}
+                onChange={handleSort}
+                value={productsStore.getSortData()}
                 className="!rounded-md"
                 options={[
                   { label: "name asc", value: "name-asc" },
@@ -45,7 +53,15 @@ const ProductsClean = observer(() => {
               />
             </Form.Item>
             <Form.Item label="Show" className="">
-              <InputNumber min={9} max={100} className="rounded-md" />
+              <InputNumber
+                onChange={(value) =>
+                  productsStore.setPagination("pageSize", value ? value : 12)
+                }
+                value={productsStore.pagination.pageSize}
+                min={9}
+                max={100}
+                className="rounded-md"
+              />
             </Form.Item>
           </Form>
         </div>
@@ -56,15 +72,7 @@ const ProductsClean = observer(() => {
             <ObserverFilterButton className="md:hidden" />
           </div>
 
-          <div
-            className={`gap-5 lg:gap-6 ${
-              productsStore.hideFilter
-                ? "col-span-4  grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 "
-                : "md:col-span-2 lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3"
-            }`}
-          >
-            <ProductList />
-          </div>
+          <ProductList />
         </div>
       </Container>
     </>

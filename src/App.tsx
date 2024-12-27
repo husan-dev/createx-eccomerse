@@ -40,6 +40,7 @@ import Blogs from "@layouts/blogs";
 import Blog from "@layouts/blog";
 import BreadcrumbContainer from "@components/breadcrumb-container";
 import MyProfile from "@layouts/my-profile";
+import AuthProtect from "./routes/auth-protect";
 
 const querycClient = new QueryClient();
 function App() {
@@ -138,14 +139,35 @@ function Routes() {
             },
             { path: "track", element: <Track /> },
             { path: "checkout", element: <Checkout /> },
-            { path: "products", element: <ProductsClean /> },
-            { path: "sign-up", element: <SignUp /> },
-            { path: "sign-in", element: <SignIn /> },
+            {
+              path: "products",
+              element: <ProductsClean />,
+            },
+            {
+              path: "sign-up",
+              element: (
+                <AuthProtect mode="guest">
+                  <SignUp />
+                </AuthProtect>
+              ),
+            },
+            {
+              path: "sign-in",
+              element: (
+                <AuthProtect mode="guest">
+                  <SignIn />
+                </AuthProtect>
+              ),
+            },
           ],
         },
         {
           path: "my-profile",
-          element: <MyProfile />,
+          element: (
+            <AuthProtect mode="auth">
+              <MyProfile />
+            </AuthProtect>
+          ),
           children: [
             { path: "", element: <Profile /> },
             { path: "orders", element: <MyOrders /> },

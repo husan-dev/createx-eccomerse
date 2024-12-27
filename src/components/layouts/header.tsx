@@ -10,23 +10,35 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Header1 from "./header-1";
-
+import { getHumanCategories, getProductCategories } from "@api/products";
+import { useQuery } from "@tanstack/react-query";
+import { HumanCategory, ProductMainCategory } from "@typess/products";
 function Header({ className }: { className?: string }) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { t } = useTranslation("", {
-    keyPrefix: "landingPage.header.section2",
-  });
+  const { i18n } = useTranslation();
   const [searchDiv, setSearchDiv] = useState(false);
   const [dCategory, setDCategory] = useState(false);
   const isCartOpen = !!searchParams.get("cart");
+  const {
+    data: humanCategories,
+    isLoading: isHumanCategoriesLoading,
+    isError: isHumanCategoriesError,
+  } = useQuery<HumanCategory[]>({
+    queryKey: ["humanCategories", i18n.language],
+    queryFn: () => getHumanCategories(i18n.language),
+  });
+  const {
+    data: categories,
+    isLoading: isCategoriesLoading,
+    isError: isCategoriesError,
+  } = useQuery<ProductMainCategory[]>({
+    queryKey: ["categories", i18n.language],
+    queryFn: () => getProductCategories(i18n.language),
+  });
 
-  const category = [
-    { title: t("womens") },
-    { title: t("mens") },
-    { title: t("girls") },
-    { title: t("boys") },
-  ];
+  if (isHumanCategoriesError) return <div>Error</div>;
+  if (isCategoriesError) return <div>Error</div>;
 
   return (
     <>
@@ -36,25 +48,40 @@ function Header({ className }: { className?: string }) {
           <Container className="flex items-center justify-between py-4 ">
             <div className="flex md:gap-[60px]">
               <img
+                loading="lazy"
                 className="cursor-pointer w-[120px] h-[30px]"
                 onClick={() => {
-                  navigate("");
+                  navigate(`/${i18n.language}`);
                 }}
                 src={logo}
-                alt=""
+                alt="logo"
               />
               <Space className="hidden xl:flex gap-[40px]">
-                {category.map((item, index) => (
-                  <Paragraph
-                    tabIndex={-1}
-                    onFocus={() => setDCategory(true)}
-                    onBlur={() => setDCategory(false)}
-                    className="font-semibold text-[16px] capitalize cursor-pointer !mb-0"
-                    key={index}
-                  >
-                    {item.title}
-                  </Paragraph>
-                ))}
+                {isHumanCategoriesLoading ? (
+                  <div className="flex gap-4 animate-pulse">
+                    {Array.from({ length: 4 }).map((_, index) => (
+                      <div
+                        key={index}
+                        className="w-[100px] h-[24px] bg-gray-200 rounded-md"
+                      ></div>
+                    ))}
+                  </div>
+                ) : (
+                  humanCategories?.map((item, index) => (
+                    <Paragraph
+                      tabIndex={-1}
+                      onMouseDown={(e) => {
+                        e.preventDefault(); // Fokusni saqlab qolish uchun
+                        setDCategory(true);
+                      }}
+                      onBlur={() => setDCategory(false)}
+                      className="font-semibold text-[16px] capitalize cursor-pointer !mb-0"
+                      key={index}
+                    >
+                      {item.name}
+                    </Paragraph>
+                  ))
+                )}
               </Space>
             </div>
             <div className="hidden gap-8 md:flex">
@@ -79,7 +106,9 @@ function Header({ className }: { className?: string }) {
 
               <Space className="hidden md:flex">
                 <Space
-                  onClick={() => navigate("my-profile/wishlist")}
+                  onClick={() =>
+                    navigate(`/${i18n.language}/my-profile/wishlist`)
+                  }
                   className="cursor-pointer"
                 >
                   <FaRegHeart className="mt-1" />0
@@ -111,18 +140,30 @@ function Header({ className }: { className?: string }) {
                 : "-translate-y-full"
             } bg-white border`}
           >
-            adasdsdas dasd as dasD AS
-            <br />
-            <br />
-            <br />
+            <div className="grid w-auto grid-cols-3 gap-5 mx-auto ">
+              {categories?.map((item) => (
+                <div key={item.order}>
+                  <div className="mb-3">
+                    <Title className="!m-0 !inline-block !font-semibold hover:!text-main hover:underline !cursor-pointer !text-[16px] uppercase">
+                      {item.name}
+                    </Title>
+                  </div>
+                  <ul className="flex flex-col gap-2">
+                    {item.subCategories.map((subItem) => (
+                      <li key={subItem.order}>
+                        <Paragraph className="!m-0 !inline-block !cursor-pointer hover:!text-main">
+                          {subItem.name}
+                        </Paragraph>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      <div className={`bg-[#17696A] ${className}`}>
-        <Container className="text-center">sadasdas</Container>
-      </div>
       <Drawer
-        bodyStyle={{ padding: 0 }}
         open={isCartOpen}
         onClose={() => setSearchParams({})}
         title={"Your Cart (0)"}

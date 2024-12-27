@@ -1,14 +1,28 @@
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input } from "antd";
 import { Title } from "@components/typography";
 import { LuTrash2 } from "react-icons/lu";
 import { useForm } from "antd/es/form/Form";
-import { useCallback } from "react";
-
+import { useCallback, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import userStore from "@store/slices/user";
 const inputClass = "!rounded-sm";
 
-const { Option } = Select;
-function Profile() {
+const Profile = observer(() => {
   const [form] = useForm();
+
+  useEffect(() => {
+    if (!userStore.user) return;
+    form.setFieldsValue({
+      firstName: userStore.user?.firstName,
+      lastName: userStore.user?.lastName,
+      email: userStore.user?.email,
+      phone: userStore.user?.phone,
+      password: userStore.user?.password,
+      confirmPassword: "",
+      adress: userStore.user?.address,
+      zipCode: userStore.user?.zipCode,
+    });
+  }, [form]);
   const onFinish = useCallback(() => {}, []);
   return (
     <>
@@ -58,11 +72,7 @@ function Profile() {
           name="phone"
           rules={[{ required: true, message: "Please enter phone number" }]}
         >
-          <Input
-            className={inputClass}
-            type="number"
-            placeholder="Enter phone number"
-          />
+          <Input className={inputClass} placeholder="Enter phone number" />
         </Form.Item>
 
         <Form.Item
@@ -89,7 +99,7 @@ function Profile() {
           />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           label="Country"
           name="country"
           rules={[{ required: true, message: "Please select your country" }]}
@@ -113,7 +123,7 @@ function Profile() {
             <Option value="c">City C</Option>
             <Option value="d">City D</Option>
           </Select>
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           label="Address"
@@ -136,6 +146,6 @@ function Profile() {
       </Button>
     </>
   );
-}
+});
 
 export default Profile;
