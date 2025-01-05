@@ -127,7 +127,6 @@ function Header({ className }: { className?: string }) {
             </div>
           </Container>
           <Divider className="!m-0" />
-          {dCategory && (
             <div
               className={`absolute h-screen -top-[42px] bg-black bg-opacity-50 -z-[40]
                w-full `}
