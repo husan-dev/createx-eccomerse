@@ -38,7 +38,6 @@ function Banner() {
       onSlideChange={handleSlideChange}
       onInit={handleSwiperInit}
       navigation={true}
-      autoplay={{ delay: 5000, disableOnInteraction: false }}
       modules={[Navigation, Autoplay]}
       breakpoints={{
         200: {

@@ -3,18 +3,51 @@ import Container from "@components/container";
 import FilterPanel from "@pages/products/filter-panel";
 import ProductList from "@pages/products/product-list";
 import productsStore from "@store/slices/products";
-import { Button, Form, InputNumber, Select, Space } from "antd";
+import { useQueryClient } from "@tanstack/react-query";
+import { Product } from "@typess/products";
+import { Button, Empty, Form, InputNumber, Select, Space } from "antd";
+import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useCallback } from "react";
 import { CiFilter } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
+import { useParams } from "react-router-dom";
 
 const ProductsClean: React.FC = observer(() => {
+  const queryClient = useQueryClient();
+  const params = useParams();
+  const mainCategory = params["main-category"] || "";
+  const humanCategory = params["human-category"] || "";
+  const category = params["category"];
   const handleSort = useCallback(
     (value: string) => {
       productsStore.setSortData(value);
     },
     [productsStore.sortData]
+  );
+  const products = toJS(
+    queryClient.getQueryData<Product[]>([
+      "products",
+      mainCategory,
+      humanCategory,
+      category ? category : "",
+      toJS(productsStore.sortData),
+      toJS(productsStore.pagination),
+      toJS(productsStore.filterData),
+    ])
+  );
+  console.log(
+    products,
+    "products",
+    toJS([
+      "products",
+      mainCategory,
+      humanCategory,
+      category,
+      toJS(productsStore.sortData),
+      toJS(productsStore.pagination),
+      toJS(productsStore.filterData),
+    ])
   );
   return (
     <>
@@ -67,11 +100,15 @@ const ProductsClean: React.FC = observer(() => {
         </div>
 
         <div className="relative grid grid-cols-1 gap-4 md:gap-5 lg:gap-6 md:grid-cols-3 lg:grid-cols-4">
-          <div className="md:!sticky !top-0">
+          <div>
             <FilterPanel />
             <ObserverFilterButton className="md:hidden" />
           </div>
-
+          {products && products.length === 0 && (
+            <div className="h-full grid-cols-1 lg:grid-cols-3 place-items-center">
+              <Empty />
+            </div>
+          )}
           <ProductList />
         </div>
       </Container>

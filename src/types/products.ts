@@ -48,9 +48,10 @@ export type Product = {
   }[];
 };
 
-export type HumanCategory = {
+export type THumanCategory = {
   order: number;
   name: string;
+  slug: string;
 };
 
 export interface SubCategory {

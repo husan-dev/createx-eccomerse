@@ -1,5 +1,7 @@
 import { Paragraph } from "@components/typography";
 import productsStore from "@store/slices/products";
+import { useQueryClient } from "@tanstack/react-query";
+import { ProductMainCategory } from "@typess/products";
 import {
   Collapse,
   CollapseProps,
@@ -14,20 +16,42 @@ import clsx from "clsx";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoRemoveOutline, IoSearch } from "react-icons/io5";
+import { useNavigate, useParams } from "react-router-dom";
 
 const FilterPanel = observer(() => {
+  // console.log(
+  //   toJS(productsStore.searchMaterialInput),
+  //   productsStore.searchMaterialData[0]
+  // );
+  const queryClient = useQueryClient();
+  const { i18n } = useTranslation();
+  const params = useParams();
+  const navigate = useNavigate();
+  const mainCategoryParams = params["main-category"];
+  const categoryParams = params["category"];
+  const humanCategoryParams = params["human-category"];
+  const cacheCategories = queryClient.getQueryData<ProductMainCategory[]>([
+    "categories",
+    i18n.language,
+  ]);
+  const chosenCategory = cacheCategories?.find(
+    (item) => item.slug === mainCategoryParams
+  );
   console.log(
-    toJS(productsStore.searchMaterialInput),
-    productsStore.searchMaterialData[0]
+    cacheCategories,
+    "cacheCategories",
+    mainCategoryParams,
+    "mainCategory"
   );
   console.log(toJS(productsStore.filterData), "filter data");
   const items: CollapseProps["items"] = useMemo(
     () => [
       {
         key: "1",
-        label: <b>Clothes</b>,
+        label: <b>{chosenCategory?.name}</b>,
         children: (
           <>
             <Input
@@ -35,6 +59,35 @@ const FilterPanel = observer(() => {
               className="w-full !rounded-sm mb-5"
               placeholder="Search Brand"
             />
+            <Radio.Group
+              value={categoryParams}
+              onChange={(e) => {
+                productsStore.setFilerData("material", e.target.value);
+                productsStore.updateSelectedFilters("material", e.target.value);
+                navigate(
+                  `/${i18n.language}/${humanCategoryParams}/${mainCategoryParams}/${e.target.value}`
+                );
+              }}
+              className="max-h-[180px] overflow-y-auto w-full"
+            >
+              <Space direction="vertical">
+                {productsStore.searchMaterialInput.length !== 0 ? (
+                  productsStore.searchMaterialData.map((item) => (
+                    <Radio key={item.value} value={item.value}>
+                      {item.title}
+                    </Radio>
+                  ))
+                ) : productsStore.searchMaterialData.length === 0 ? (
+                  <Empty className="w-full" />
+                ) : (
+                  chosenCategory?.subCategories.map((item) => (
+                    <Radio key={item.slug} value={item.slug}>
+                      {item.name}
+                    </Radio>
+                  ))
+                )}
+              </Space>
+            </Radio.Group>
           </>
         ),
       },
@@ -230,6 +283,9 @@ const FilterPanel = observer(() => {
       productsStore.filterData.price,
       productsStore.searchMaterialInput,
       productsStore.searchBrandInput,
+      mainCategoryParams,
+      cacheCategories,
+      categoryParams,
     ]
   );
   return (

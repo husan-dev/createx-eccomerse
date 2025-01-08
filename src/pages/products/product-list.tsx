@@ -3,21 +3,30 @@ import Card from "@components/products-card";
 import productsStore from "@store/slices/products";
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@typess/products";
+import { Empty } from "antd";
 import { observer } from "mobx-react-lite";
+import { useParams } from "react-router-dom";
 const ProductList = observer(() => {
+  const params = useParams();
+  const mainCategory = params["main-category"] || "";
+  const humanCategory = params["human-category"] || "";
+  const category = params["category"] || "";
   const { data, isLoading, isError } = useQuery<Product[]>({
     queryKey: [
       "products",
+      mainCategory,
+      humanCategory,
+      category,
       productsStore.sortData,
       productsStore.pagination,
       productsStore.filterData,
     ],
-    queryFn: () => getProducts(),
+    queryFn: () => getProducts(mainCategory, humanCategory, category),
   });
   if (isLoading)
     return (
       <ProductsContainer>
-        {Array.from({ length: 10 }).map((_, index) => (
+        {Array.from({ length: 12 }).map((_, index) => (
           <div
             key={index}
             className="flex flex-col gap-3 select-none animate-pulse"

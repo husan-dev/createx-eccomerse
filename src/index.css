@@ -15,3 +15,10 @@
 /* * {
   outline: 1px solid limegreen;
 } */
+body.hidden-scrollbar {
+  overflow: hidden; /* Scroll barni yashirish */
+}
+
+body.visible-scrollbar {
+  overflow: auto; /* Scroll barni ko‘rsatish */
+}

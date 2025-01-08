@@ -1,7 +1,11 @@
 import api from "./axios";
 import productsStore from "@store/slices/products";
 
-export const getProducts = async () => {
+export const getProducts = async (
+  mainCategory: string,
+  humanCategory: string,
+  category: string
+) => {
   try {
     const response = await api.post("graphql", {
       query: `query Products($sort: [String], $pagination: PaginationArg,  $filters: ProductFiltersInput) {
@@ -76,24 +80,29 @@ export const getProducts = async () => {
           pageSize: productsStore.pagination.pageSize,
         },
         filters: {
-          material: {
-            contains:
-              productsStore.filterData.material === null
-                ? ""
-                : productsStore.filterData.material,
-          },
-          brand: {
-            contains:
-              productsStore.filterData.brand === null
-                ? ""
-                : productsStore.filterData.brand,
-          },
+          material: productsStore.filterData.material
+            ? { contains: productsStore.filterData.material }
+            : {},
+          brand: productsStore.filterData.brand
+            ? { contains: productsStore.filterData.brand }
+            : {},
           price: productsStore.filterData.price
             ? {
                 gte: productsStore.filterData.price[0] ?? 0,
                 lte: productsStore.filterData.price[1] ?? 0,
               }
             : undefined,
+          humanCategory: {
+            slug: {
+              eq: humanCategory,
+            },
+          },
+          mainCateogory: {
+            slug: {
+              eq: mainCategory,
+            },
+          },
+          category: category ? { slug: { eq: category } } : null,
         },
       },
     });

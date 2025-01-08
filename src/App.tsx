@@ -137,12 +137,18 @@ function Routes() {
                 { path: "reviews", element: <ProductReviews /> },
               ],
             },
-
             { path: "track", element: <Track /> },
             { path: "checkout", element: <Checkout /> },
             {
-              path: "products",
+              path: ":human-category",
               element: <ProductsClean />,
+              children: [
+                {
+                  path: ":main-category",
+                  element: <ProductsClean />,
+                  children: [{ path: ":category", element: <ProductsClean /> }],
+                },
+              ],
             },
             {
               path: "sign-up",
